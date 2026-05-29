@@ -22,6 +22,7 @@
   },
   "scripts": {
     "vscode:prepublish": "npm run build",
+    "dev": "cd webview && npm run dev",
     "build:web": "cd webview && npm run build",
     "build:ext": "tsc -p ./",
     "build": "npm run build:web && npm run build:ext",

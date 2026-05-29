@@ -8,6 +8,9 @@ export default defineConfig({
     react(),
   ],
   base: './',
+  server: {
+    open: true,
+  },
   build: {
     outDir: 'dist',
     // Inline assets pequenos para reduzir requisições no webview
