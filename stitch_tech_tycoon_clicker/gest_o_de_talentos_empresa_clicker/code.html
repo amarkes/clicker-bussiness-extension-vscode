@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="pt-BR"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Empresa Clicker - Gestão de Talentos</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&amp;family=JetBrains+Mono:wght@500&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;family=JetBrains+Mono:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container-lowest": "#060e20",
+                        "on-tertiary": "#3c0091",
+                        "on-secondary-fixed-variant": "#005236",
+                        "on-error-container": "#ffdad6",
+                        "surface": "#0b1326",
+                        "secondary-container": "#00a572",
+                        "on-primary-container": "#00285d",
+                        "surface-container-low": "#131b2e",
+                        "error-container": "#93000a",
+                        "on-background": "#dae2fd",
+                        "surface-container": "#171f33",
+                        "surface-tint": "#adc6ff",
+                        "tertiary-fixed": "#e9ddff",
+                        "on-tertiary-fixed-variant": "#5516be",
+                        "on-primary-fixed-variant": "#004395",
+                        "tertiary-fixed-dim": "#d0bcff",
+                        "primary-fixed-dim": "#adc6ff",
+                        "primary": "#adc6ff",
+                        "inverse-surface": "#dae2fd",
+                        "on-surface-variant": "#c2c6d6",
+                        "surface-bright": "#31394d",
+                        "on-primary-fixed": "#001a42",
+                        "on-secondary": "#003824",
+                        "tertiary": "#d0bcff",
+                        "on-tertiary-container": "#340080",
+                        "error": "#ffb4ab",
+                        "outline-variant": "#424754",
+                        "surface-container-high": "#222a3d",
+                        "surface-container-highest": "#2d3449",
+                        "outline": "#8c909f",
+                        "surface-variant": "#2d3449",
+                        "secondary-fixed-dim": "#4edea3",
+                        "surface-dim": "#0b1326",
+                        "on-tertiary-fixed": "#23005c",
+                        "inverse-on-surface": "#283044",
+                        "on-secondary-fixed": "#002113",
+                        "on-primary": "#002e6a",
+                        "background": "#0b1326",
+                        "secondary": "#4edea3",
+                        "primary-fixed": "#d8e2ff",
+                        "inverse-primary": "#005ac2",
+                        "on-surface": "#dae2fd",
+                        "on-error": "#690005",
+                        "primary-container": "#4d8eff",
+                        "secondary-fixed": "#6ffbbe",
+                        "on-secondary-container": "#00311f",
+                        "tertiary-container": "#a078ff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin-mobile": "16px",
+                        "lg": "24px",
+                        "gutter": "16px",
+                        "base": "4px",
+                        "xl": "32px",
+                        "md": "16px",
+                        "margin-desktop": "40px",
+                        "xs": "4px",
+                        "sm": "8px"
+                    },
+                    "fontFamily": {
+                        "display-currency-mobile": ["Inter"],
+                        "display-currency": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "body-sm": ["Inter"],
+                        "label-mono": ["JetBrains Mono"],
+                        "label-caps": ["Inter"],
+                        "headline-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "display-currency-mobile": ["32px", {"lineHeight": "36px", "fontWeight": "700"}],
+                        "display-currency": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                        "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "label-mono": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                        "label-caps": ["11px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "700"}],
+                        "headline-lg": ["24px", {"lineHeight": "32px", "fontWeight": "600"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            line-height: 1;
+            text-transform: none;
+            letter-spacing: normal;
+            word-wrap: normal;
+            white-space: nowrap;
+            direction: ltr;
+        }
+        .glass-card {
+            background: rgba(23, 31, 51, 0.4);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        .active-glow {
+            box-shadow: 0 0 15px rgba(173, 198, 255, 0.15);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body-lg selection:bg-primary selection:text-on-primary">
+<!-- TopAppBar -->
+<header class="fixed top-0 right-0 w-full z-40 bg-surface/80 backdrop-blur-md border-b border-outline-variant/10 shadow-sm flex justify-between items-center px-lg h-16">
+<div class="flex items-center gap-md">
+<h1 class="font-headline-lg text-headline-lg font-black text-primary">Empresa Clicker</h1>
+<div class="hidden md:flex bg-surface-container-high rounded-full px-md py-xs items-center gap-sm">
+<span class="material-symbols-outlined text-primary" style="font-size: 18px;">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-body-sm w-48 text-on-surface-variant" placeholder="Procurar talentos..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-lg">
+<div class="flex flex-col items-end">
+<span class="font-label-mono text-secondary text-label-mono">$1.2M/sec</span>
+<span class="font-label-caps text-on-surface-variant text-[10px] uppercase tracking-widest">+15% Boost</span>
+</div>
+<div class="flex items-center gap-md">
+<button class="material-symbols-outlined text-on-surface-variant hover:text-primary transition-colors">notifications</button>
+<button class="material-symbols-outlined text-on-surface-variant hover:text-primary transition-colors">account_balance_wallet</button>
+<div class="h-8 w-8 rounded-full bg-primary-container flex items-center justify-center text-on-primary-container font-bold text-xs">JD</div>
+</div>
+</div>
+</header>
+<!-- SideNavBar -->
+<aside class="hidden md:flex flex-col h-screen w-64 fixed left-0 top-0 bg-surface-container-low dark:bg-surface-container-lowest border-r border-outline-variant/10 py-md overflow-y-auto z-50">
+<div class="px-md mb-xl mt-4">
+<div class="flex items-center gap-sm mb-xs">
+<div class="w-10 h-10 rounded-lg bg-gradient-to-br from-primary to-tertiary flex items-center justify-center">
+<span class="material-symbols-outlined text-on-primary">business_center</span>
+</div>
+<div>
+<h2 class="font-headline-lg text-[18px] font-bold text-primary tracking-tight leading-tight">Empresa Clicker</h2>
+<p class="text-on-surface-variant text-[12px]">CEO / Level 42</p>
+</div>
+</div>
+</div>
+<nav class="flex-1 space-y-1 px-sm">
+<a class="flex items-center gap-md text-on-surface-variant font-medium pl-4 py-3 hover:bg-surface-container-high transition-colors duration-200 rounded-lg" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-body-lg text-body-lg">Dashboard</span>
+</a>
+<a class="flex items-center gap-md text-secondary font-bold border-l-4 border-secondary pl-3 py-3 bg-surface-container-high transition-colors duration-200 rounded-r-lg" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">groups</span>
+<span class="font-body-lg text-body-lg">Talent</span>
+</a>
+<a class="flex items-center gap-md text-on-surface-variant font-medium pl-4 py-3 hover:bg-surface-container-high transition-colors duration-200 rounded-lg" href="#">
+<span class="material-symbols-outlined">domain</span>
+<span class="font-body-lg text-body-lg">Infrastructure</span>
+</a>
+<a class="flex items-center gap-md text-on-surface-variant font-medium pl-4 py-3 hover:bg-surface-container-high transition-colors duration-200 rounded-lg" href="#">
+<span class="material-symbols-outlined">account_tree</span>
+<span class="font-body-lg text-body-lg">Projects</span>
+</a>
+<a class="flex items-center gap-md text-on-surface-variant font-medium pl-4 py-3 hover:bg-surface-container-high transition-colors duration-200 rounded-lg" href="#">
+<span class="material-symbols-outlined">biotech</span>
+<span class="font-body-lg text-body-lg">R&amp;D</span>
+</a>
+<a class="flex items-center gap-md text-on-surface-variant font-medium pl-4 py-3 hover:bg-surface-container-high transition-colors duration-200 rounded-lg" href="#">
+<span class="material-symbols-outlined">star</span>
+<span class="font-body-lg text-body-lg">Prestige</span>
+</a>
+</nav>
+<div class="px-md mt-auto pt-md border-t border-outline-variant/10">
+<button class="w-full bg-primary text-on-primary py-3 rounded-xl font-bold active:scale-95 transition-transform mb-md shadow-lg shadow-primary/20">
+                Buy Boost
+            </button>
+<div class="space-y-1">
+<a class="flex items-center gap-md text-on-surface-variant font-medium pl-4 py-2 hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="text-body-sm">Settings</span>
+</a>
+<a class="flex items-center gap-md text-on-surface-variant font-medium pl-4 py-2 hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined">help</span>
+<span class="text-body-sm">Support</span>
+</a>
+</div>
+</div>
+</aside>
+<!-- Main Canvas -->
+<main class="md:pl-64 pt-16 min-h-screen">
+<div class="p-md md:p-xl max-w-7xl mx-auto">
+<!-- Header Section -->
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-md mb-xl">
+<div>
+<h2 class="font-headline-lg text-headline-lg text-primary mb-xs">Gestão de Talentos</h2>
+<p class="text-on-surface-variant max-w-2xl">Otimize sua força de trabalho para maximizar a produção. Recrute especialistas para automatizar operações e escalar seu império tecnológico.</p>
+</div>
+<!-- Summary Stats -->
+<div class="grid grid-cols-2 gap-md w-full md:w-auto">
+<div class="glass-card p-md rounded-xl flex flex-col min-w-[160px]">
+<span class="font-label-caps text-label-caps text-on-surface-variant uppercase mb-xs">Total Funcionários</span>
+<span class="font-display-currency text-headline-lg text-secondary">1,402</span>
+</div>
+<div class="glass-card p-md rounded-xl flex flex-col min-w-[160px]">
+<span class="font-label-caps text-label-caps text-on-surface-variant uppercase mb-xs">Custo Mensal Est.</span>
+<span class="font-display-currency text-headline-lg text-error">R$ 2.4M</span>
+</div>
+</div>
+</div>
+<!-- Talent Grid -->
+<div class="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-gutter">
+<!-- Card: Estagiário -->
+<div class="glass-card rounded-xl overflow-hidden group hover:border-primary/30 transition-all duration-300">
+<div class="p-md flex items-start justify-between">
+<div class="flex gap-md">
+<div class="w-12 h-12 rounded-lg bg-surface-container-highest flex items-center justify-center text-primary-fixed-dim">
+<span class="material-symbols-outlined" style="font-size: 32px;">school</span>
+</div>
+<div>
+<h3 class="font-headline-md text-headline-md text-on-surface">Estagiário</h3>
+<p class="text-body-sm text-on-surface-variant">Suporte básico e café.</p>
+</div>
+</div>
+<span class="bg-surface-container-highest px-sm py-xs rounded text-[10px] font-bold text-primary-fixed-dim uppercase tracking-tighter">Level 1</span>
+</div>
+<div class="px-md pb-md">
+<div class="flex justify-between items-center mb-md py-sm border-y border-outline-variant/10">
+<div class="flex flex-col">
+<span class="text-label-caps text-[10px] text-on-surface-variant">PRODUÇÃO</span>
+<span class="font-label-mono text-secondary">R$ 1/s</span>
+</div>
+<div class="flex flex-col items-end">
+<span class="text-label-caps text-[10px] text-on-surface-variant">SALÁRIO</span>
+<span class="font-label-mono text-on-surface">R$ 100</span>
+</div>
+</div>
+<button class="w-full bg-primary hover:bg-primary-container text-on-primary py-3 rounded-lg font-bold flex justify-between px-md items-center transition-all active:scale-[0.98]">
+<span>Contratar</span>
+<span class="font-label-mono">R$ 100</span>
+</button>
+</div>
+</div>
+<!-- Card: Desenvolvedor Júnior -->
+<div class="glass-card rounded-xl overflow-hidden group hover:border-primary/30 transition-all duration-300">
+<div class="p-md flex items-start justify-between">
+<div class="flex gap-md">
+<div class="w-12 h-12 rounded-lg bg-surface-container-highest flex items-center justify-center text-primary-fixed-dim">
+<span class="material-symbols-outlined" style="font-size: 32px;">code</span>
+</div>
+<div>
+<h3 class="font-headline-md text-headline-md text-on-surface">Dev Júnior</h3>
+<p class="text-body-sm text-on-surface-variant">Correção de bugs simples.</p>
+</div>
+</div>
+<span class="bg-surface-container-highest px-sm py-xs rounded text-[10px] font-bold text-primary-fixed-dim uppercase tracking-tighter">Level 1</span>
+</div>
+<div class="px-md pb-md">
+<div class="flex justify-between items-center mb-md py-sm border-y border-outline-variant/10">
+<div class="flex flex-col">
+<span class="text-label-caps text-[10px] text-on-surface-variant">PRODUÇÃO</span>
+<span class="font-label-mono text-secondary">R$ 5/s</span>
+</div>
+<div class="flex flex-col items-end">
+<span class="text-label-caps text-[10px] text-on-surface-variant">SALÁRIO</span>
+<span class="font-label-mono text-on-surface">R$ 500</span>
+</div>
+</div>
+<button class="w-full bg-primary hover:bg-primary-container text-on-primary py-3 rounded-lg font-bold flex justify-between px-md items-center transition-all active:scale-[0.98]">
+<span>Contratar</span>
+<span class="font-label-mono">R$ 500</span>
+</button>
+</div>
+</div>
+<!-- Card: Desenvolvedor Pleno -->
+<div class="glass-card rounded-xl overflow-hidden group hover:border-primary/30 transition-all duration-300">
+<div class="p-md flex items-start justify-between">
+<div class="flex gap-md">
+<div class="w-12 h-12 rounded-lg bg-surface-container-highest flex items-center justify-center text-primary-fixed-dim">
+<span class="material-symbols-outlined" style="font-size: 32px;">terminal</span>
+</div>
+<div>
+<h3 class="font-headline-md text-headline-md text-on-surface">Dev Pleno</h3>
+<p class="text-body-sm text-on-surface-variant">Arquitetura de features.</p>
+</div>
+</div>
+<span class="bg-surface-container-highest px-sm py-xs rounded text-[10px] font-bold text-primary-fixed-dim uppercase tracking-tighter">Level 1</span>
+</div>
+<div class="px-md pb-md">
+<div class="flex justify-between items-center mb-md py-sm border-y border-outline-variant/10">
+<div class="flex flex-col">
+<span class="text-label-caps text-[10px] text-on-surface-variant">PRODUÇÃO</span>
+<span class="font-label-mono text-secondary">R$ 20/s</span>
+</div>
+<div class="flex flex-col items-end">
+<span class="text-label-caps text-[10px] text-on-surface-variant">SALÁRIO</span>
+<span class="font-label-mono text-on-surface">R$ 2.000</span>
+</div>
+</div>
+<button class="w-full bg-primary hover:bg-primary-container text-on-primary py-3 rounded-lg font-bold flex justify-between px-md items-center transition-all active:scale-[0.98]">
+<span>Contratar</span>
+<span class="font-label-mono">R$ 2.000</span>
+</button>
+</div>
+</div>
+<!-- Card: Desenvolvedor Sênior -->
+<div class="glass-card rounded-xl overflow-hidden group border-primary/20 bg-primary/5 transition-all duration-300 relative">
+<div class="absolute top-0 right-0 p-2">
+<span class="flex h-2 w-2">
+<span class="animate-ping absolute inline-flex h-2 w-2 rounded-full bg-primary opacity-75"></span>
+<span class="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
+</span>
+</div>
+<div class="p-md flex items-start justify-between">
+<div class="flex gap-md">
+<div class="w-12 h-12 rounded-lg bg-primary-container flex items-center justify-center text-on-primary-container">
+<span class="material-symbols-outlined" style="font-size: 32px; font-variation-settings: 'FILL' 1;">psychology</span>
+</div>
+<div>
+<h3 class="font-headline-md text-headline-md text-on-surface">Dev Sênior</h3>
+<p class="text-body-sm text-on-surface-variant">Resolve o impossível.</p>
+</div>
+</div>
+<span class="bg-primary/20 px-sm py-xs rounded text-[10px] font-bold text-primary uppercase tracking-tighter">Sugestão</span>
+</div>
+<div class="px-md pb-md">
+<div class="flex justify-between items-center mb-md py-sm border-y border-outline-variant/10">
+<div class="flex flex-col">
+<span class="text-label-caps text-[10px] text-on-surface-variant">PRODUÇÃO</span>
+<span class="font-label-mono text-secondary">R$ 100/s</span>
+</div>
+<div class="flex flex-col items-end">
+<span class="text-label-caps text-[10px] text-on-surface-variant">SALÁRIO</span>
+<span class="font-label-mono text-on-surface">R$ 10.000</span>
+</div>
+</div>
+<button class="w-full bg-primary hover:bg-primary-container text-on-primary py-3 rounded-lg font-bold flex justify-between px-md items-center transition-all active:scale-[0.98]">
+<span>Contratar</span>
+<span class="font-label-mono">R$ 10.000</span>
+</button>
+</div>
+</div>
+<!-- Card: Tech Lead -->
+<div class="glass-card rounded-xl overflow-hidden group hover:border-primary/30 transition-all duration-300">
+<div class="p-md flex items-start justify-between">
+<div class="flex gap-md">
+<div class="w-12 h-12 rounded-lg bg-surface-container-highest flex items-center justify-center text-primary-fixed-dim">
+<span class="material-symbols-outlined" style="font-size: 32px;">leaderboard</span>
+</div>
+<div>
+<h3 class="font-headline-md text-headline-md text-on-surface">Tech Lead</h3>
+<p class="text-body-sm text-on-surface-variant">Gestão técnica de elite.</p>
+</div>
+</div>
+<span class="bg-surface-container-highest px-sm py-xs rounded text-[10px] font-bold text-primary-fixed-dim uppercase tracking-tighter">Premium</span>
+</div>
+<div class="px-md pb-md">
+<div class="flex justify-between items-center mb-md py-sm border-y border-outline-variant/10">
+<div class="flex flex-col">
+<span class="text-label-caps text-[10px] text-on-surface-variant">PRODUÇÃO</span>
+<span class="font-label-mono text-secondary">R$ 500/s</span>
+</div>
+<div class="flex flex-col items-end">
+<span class="text-label-caps text-[10px] text-on-surface-variant">SALÁRIO</span>
+<span class="font-label-mono text-on-surface">R$ 50.000</span>
+</div>
+</div>
+<button class="w-full bg-primary hover:bg-primary-container text-on-primary py-3 rounded-lg font-bold flex justify-between px-md items-center transition-all active:scale-[0.98]">
+<span>Contratar</span>
+<span class="font-label-mono">R$ 50.000</span>
+</button>
+</div>
+</div>
+<!-- Card: Gerente de Projetos -->
+<div class="glass-card rounded-xl overflow-hidden group hover:border-primary/30 transition-all duration-300">
+<div class="p-md flex items-start justify-between">
+<div class="flex gap-md">
+<div class="w-12 h-12 rounded-lg bg-surface-container-highest flex items-center justify-center text-primary-fixed-dim">
+<span class="material-symbols-outlined" style="font-size: 32px;">account_tree</span>
+</div>
+<div>
+<h3 class="font-headline-md text-headline-md text-on-surface">Gerente Proj.</h3>
+<p class="text-body-sm text-on-surface-variant">Entrega no prazo (quase).</p>
+</div>
+</div>
+<span class="bg-surface-container-highest px-sm py-xs rounded text-[10px] font-bold text-primary-fixed-dim uppercase tracking-tighter">Elite</span>
+</div>
+<div class="px-md pb-md">
+<div class="flex justify-between items-center mb-md py-sm border-y border-outline-variant/10">
+<div class="flex flex-col">
+<span class="text-label-caps text-[10px] text-on-surface-variant">PRODUÇÃO</span>
+<span class="font-label-mono text-secondary">R$ 2.500/s</span>
+</div>
+<div class="flex flex-col items-end">
+<span class="text-label-caps text-[10px] text-on-surface-variant">SALÁRIO</span>
+<span class="font-label-mono text-on-surface">R$ 250.000</span>
+</div>
+</div>
+<button class="w-full bg-primary hover:bg-primary-container text-on-primary py-3 rounded-lg font-bold flex justify-between px-md items-center transition-all active:scale-[0.98]">
+<span>Contratar</span>
+<span class="font-label-mono">R$ 250k</span>
+</button>
+</div>
+</div>
+<!-- Card: Diretor de Tecnologia -->
+<div class="glass-card rounded-xl overflow-hidden group hover:border-tertiary/50 transition-all duration-300 col-span-1 lg:col-span-2 xl:col-span-1 border-tertiary/20">
+<div class="p-md flex items-start justify-between">
+<div class="flex gap-md">
+<div class="w-12 h-12 rounded-lg bg-tertiary-container flex items-center justify-center text-on-tertiary-container">
+<span class="material-symbols-outlined" style="font-size: 32px; font-variation-settings: 'FILL' 1;">star</span>
+</div>
+<div>
+<h3 class="font-headline-md text-headline-md text-tertiary">CTO</h3>
+<p class="text-body-sm text-on-surface-variant">Visão estratégica global.</p>
+</div>
+</div>
+<span class="bg-tertiary/20 px-sm py-xs rounded text-[10px] font-bold text-tertiary uppercase tracking-tighter">Legendary</span>
+</div>
+<div class="px-md pb-md">
+<div class="flex justify-between items-center mb-md py-sm border-y border-outline-variant/10">
+<div class="flex flex-col">
+<span class="text-label-caps text-[10px] text-on-surface-variant">PRODUÇÃO</span>
+<span class="font-label-mono text-secondary">R$ 10.000/s</span>
+</div>
+<div class="flex flex-col items-end">
+<span class="text-label-caps text-[10px] text-on-surface-variant">SALÁRIO</span>
+<span class="font-label-mono text-on-surface">R$ 1.000.000</span>
+</div>
+</div>
+<button class="w-full bg-tertiary hover:bg-tertiary-container text-on-tertiary py-3 rounded-lg font-bold flex justify-between px-md items-center transition-all active:scale-[0.98] shadow-lg shadow-tertiary/20">
+<span>Contratar</span>
+<span class="font-label-mono">R$ 1.0M</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Team Growth Visualization Section -->
+<section class="mt-xl grid grid-cols-1 md:grid-cols-3 gap-gutter">
+<div class="md:col-span-2 glass-card rounded-2xl p-lg relative overflow-hidden h-64">
+<div class="relative z-10">
+<h4 class="font-headline-md text-headline-md text-on-surface mb-sm">Escalabilidade da Equipe</h4>
+<p class="text-body-sm text-on-surface-variant mb-lg max-w-md">Contrate mais talentos para desbloquear bônus de sinergia e aumentar a eficiência do desenvolvimento de produtos.</p>
+<div class="flex items-end gap-xs h-24">
+<!-- Simple Sparkline Visualization -->
+<div class="w-full bg-primary/10 rounded-t h-12"></div>
+<div class="w-full bg-primary/15 rounded-t h-16"></div>
+<div class="w-full bg-primary/20 rounded-t h-20"></div>
+<div class="w-full bg-primary/25 rounded-t h-14"></div>
+<div class="w-full bg-primary/30 rounded-t h-24"></div>
+<div class="w-full bg-primary/40 rounded-t h-32 relative">
+<div class="absolute -top-6 left-1/2 -translate-x-1/2 text-[10px] font-bold text-primary">CURRENT</div>
+</div>
+<div class="w-full bg-surface-container-highest rounded-t h-28 opacity-30"></div>
+<div class="w-full bg-surface-container-highest rounded-t h-40 opacity-20"></div>
+</div>
+</div>
+<div class="absolute bottom-0 right-0 w-1/3 h-full opacity-10 pointer-events-none">
+<img class="w-full h-full object-cover grayscale" data-alt="A futuristic data visualization interface showing complex branching node structures and glowing blue lines against a deep dark background. The aesthetic is clean, professional, and tech-focused, representing an advanced corporate management system with a modern glassmorphic touch and subtle neon accents." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBFsDNR5EufWFTrkvBYQMY9p5iXzIDgvXExHrWDzEwhCGJjB4Zl9sUmttBbyZdo6puWdKs2s1jIrZewFhqez3GjG9JDwzGfo7Myq7ctAKOicl6l494NEwo6JSyGjJex8-cj7a4njNDpqg886b8cKstOday3JKhsZ5_gcBkEdhgb8mlVqtwesT3mXYyn1CS6NDCZJyfGdaVgKyKO9vwYE4mqzI1Qr44NRrCxH9Uo-k453JfybblacD4pc6U0N0s3TCCYUVt4pdG1ylMJ"/>
+</div>
+</div>
+<div class="glass-card rounded-2xl p-lg flex flex-col justify-between">
+<div>
+<h4 class="font-headline-md text-headline-md text-on-surface mb-sm">Próxima Meta</h4>
+<p class="text-body-sm text-on-surface-variant mb-md">Contrate 5 Tech Leads para desbloquear 'Arquitetura Serverless'.</p>
+</div>
+<div class="space-y-sm">
+<div class="flex justify-between items-center text-label-mono">
+<span class="text-on-surface-variant">Progresso</span>
+<span class="text-primary">3 / 5</span>
+</div>
+<div class="h-2 w-full bg-surface-container-highest rounded-full overflow-hidden">
+<div class="h-full bg-primary w-[60%] shadow-[0_0_8px_rgba(173,198,255,0.5)]"></div>
+</div>
+<button class="w-full mt-lg text-primary text-body-sm font-bold flex items-center justify-center gap-xs hover:bg-primary/10 py-2 rounded-lg transition-colors">
+                            Ver Detalhes <span class="material-symbols-outlined text-xs">arrow_forward</span>
+</button>
+</div>
+</div>
+</section>
+</div>
+</main>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full bg-surface-container-high/90 backdrop-blur-xl border-t border-white/5 shadow-[0_-4px_12px_rgba(0,0,0,0.5)] flex justify-around items-center px-md pb-sm pt-xs z-50">
+<a class="flex flex-col items-center justify-center text-on-surface-variant p-sm active:scale-90 transition-all duration-150" href="#">
+<span class="material-symbols-outlined">business</span>
+<span class="font-label-caps text-label-caps mt-1">Office</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-secondary-container/20 text-secondary rounded-xl p-sm active:scale-90 transition-all duration-150" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">person_add</span>
+<span class="font-label-caps text-label-caps mt-1">Staff</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant p-sm active:scale-90 transition-all duration-150" href="#">
+<span class="material-symbols-outlined">construction</span>
+<span class="font-label-caps text-label-caps mt-1">Build</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant p-sm active:scale-90 transition-all duration-150" href="#">
+<span class="material-symbols-outlined">psychology</span>
+<span class="font-label-caps text-label-caps mt-1">Tech</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant p-sm active:scale-90 transition-all duration-150" href="#">
+<span class="material-symbols-outlined">military_tech</span>
+<span class="font-label-caps text-label-caps mt-1">Prestige</span>
+</a>
+</nav>
+<script>
+        // Simple interactivity for Hire buttons
+        document.querySelectorAll('button').forEach(btn => {
+            if (btn.innerText.includes('Contratar')) {
+                btn.addEventListener('click', () => {
+                    // Flash effect
+                    const originalBg = btn.classList.contains('bg-tertiary') ? 'bg-tertiary' : 'bg-primary';
+                    btn.classList.remove(originalBg);
+                    btn.classList.add('bg-secondary');
+                    
+                    setTimeout(() => {
+                        btn.classList.remove('bg-secondary');
+                        btn.classList.add(originalBg);
+                    }, 100);
+
+                    // Add a tiny floating particle or something simple if needed
+                    console.log('Talento contratado!');
+                });
+            }
+        });
+    </script>
+</body></html>

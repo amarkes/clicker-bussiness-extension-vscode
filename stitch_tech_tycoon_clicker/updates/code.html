@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="pt-BR"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .glass-card {
+            background: rgba(45, 52, 73, 0.4);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .glass-card:hover {
+            background: rgba(45, 52, 73, 0.6);
+            border-color: rgba(173, 198, 255, 0.3);
+            box-shadow: 0 0 20px rgba(59, 130, 246, 0.1);
+        }
+        .progress-bar-glow {
+            box-shadow: 0 0 8px var(--tw-shadow-color);
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 200, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            background-color: #0b1326;
+            color: #dae2fd;
+        }
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0b1326;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #424754;
+            border-radius: 10px;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "outline": "#8c909f",
+                        "tertiary": "#d0bcff",
+                        "on-secondary-fixed": "#002113",
+                        "on-primary-fixed-variant": "#004395",
+                        "surface-dim": "#0b1326",
+                        "on-tertiary": "#3c0091",
+                        "on-secondary-container": "#00311f",
+                        "on-error-container": "#ffdad6",
+                        "on-error": "#690005",
+                        "primary-fixed": "#d8e2ff",
+                        "on-tertiary-fixed": "#23005c",
+                        "on-primary-fixed": "#001a42",
+                        "surface-container-highest": "#2d3449",
+                        "on-surface": "#dae2fd",
+                        "secondary-container": "#00a572",
+                        "tertiary-container": "#a078ff",
+                        "background": "#0b1326",
+                        "error-container": "#93000a",
+                        "tertiary-fixed": "#e9ddff",
+                        "surface-container-low": "#131b2e",
+                        "on-surface-variant": "#c2c6d6",
+                        "surface": "#0b1326",
+                        "secondary-fixed": "#6ffbbe",
+                        "primary": "#adc6ff",
+                        "error": "#ffb4ab",
+                        "on-background": "#dae2fd",
+                        "outline-variant": "#424754",
+                        "tertiary-fixed-dim": "#d0bcff",
+                        "surface-container-lowest": "#060e20",
+                        "primary-container": "#4d8eff",
+                        "on-tertiary-container": "#340080",
+                        "surface-tint": "#adc6ff",
+                        "on-tertiary-fixed-variant": "#5516be",
+                        "inverse-on-surface": "#283044",
+                        "secondary-fixed-dim": "#4edea3",
+                        "on-secondary-fixed-variant": "#005236",
+                        "surface-variant": "#2d3449",
+                        "surface-container-high": "#222a3d",
+                        "secondary": "#4edea3",
+                        "on-secondary": "#003824",
+                        "on-primary-container": "#00285d",
+                        "surface-container": "#171f33",
+                        "surface-bright": "#31394d",
+                        "inverse-primary": "#005ac2",
+                        "inverse-surface": "#dae2fd",
+                        "on-primary": "#002e6a",
+                        "primary-fixed-dim": "#adc6ff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "xs": "4px",
+                        "xl": "32px",
+                        "sm": "8px",
+                        "md": "16px",
+                        "gutter": "16px",
+                        "margin-desktop": "40px",
+                        "margin-mobile": "16px",
+                        "lg": "24px",
+                        "base": "4px"
+                    },
+                    "fontFamily": {
+                        "body-lg": ["Inter"],
+                        "display-currency-mobile": ["Inter"],
+                        "label-caps": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "display-currency": ["Inter"],
+                        "body-sm": ["Inter"],
+                        "label-mono": ["JetBrains Mono"],
+                        "headline-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "display-currency-mobile": ["32px", {"lineHeight": "36px", "fontWeight": "700"}],
+                        "label-caps": ["11px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "700"}],
+                        "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                        "display-currency": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "label-mono": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                        "headline-lg": ["24px", {"lineHeight": "32px", "fontWeight": "600"}]
+                    }
+                },
+            },
+        }
+    </script>
+</head>
+<body class="font-body-lg text-on-surface overflow-hidden">
+<!-- SideNavBar Integration -->
+<aside class="h-screen w-64 fixed left-0 top-0 bg-surface-dim dark:bg-surface-dim border-r border-outline-variant/30 flex flex-col py-lg px-md z-50">
+<div class="mb-xl">
+<h1 class="font-headline-lg text-headline-lg font-bold text-primary">Executive Pulse</h1>
+<div class="flex items-center gap-sm mt-md p-sm bg-surface-container rounded-lg">
+<img alt="Executive Portrait" class="w-10 h-10 rounded-full border border-primary/20" data-alt="A professional high-resolution executive portrait of a seasoned corporate leader in a minimalist dark suit against a soft-focus architectural glass background. The lighting is dramatic and moody, with cool blue tones and crisp edges, reflecting a high-end corporate CEO aesthetic. The style is modern, sharp, and authoritative." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDz_egHE95ft23vu7jL7lhq4XaDKw973feFsg3oxRW0oq3U73rErFm-DYC_dR2oic-hEdS_ydVoY8r1GFKAyPIbOP9vwAaiZ9sqGWYaXc0gmAvMI8MBUiQRiGNQLogNOaMbqU9rxQ6H0jaeeEH8sJvztKPnJuzpeDriFJ5ddqG2eUZG-VrcAaey4Si7Mxhwd__1ExtSdMPx_4rRv_IAYIVHE49FmS-zWWirpRuG4sBCZtmi6MdBNdTE5jC8vukNoWVzIShkJijdDJTI"/>
+<div>
+<p class="font-label-mono text-label-mono text-primary">CEO Level 42</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant truncate">Executivo Sênior</p>
+</div>
+</div>
+</div>
+<nav class="flex-1 space-y-xs">
+<!-- Navigation Items -->
+<a class="flex items-center gap-md p-sm rounded-lg text-on-surface-variant font-medium hover:bg-surface-container-highest transition-colors active:scale-95 duration-100" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span>Dashboard</span>
+</a>
+<a class="flex items-center gap-md p-sm rounded-lg text-on-surface-variant font-medium hover:bg-surface-container-highest transition-colors active:scale-95 duration-100" href="#">
+<span class="material-symbols-outlined" data-icon="group">group</span>
+<span>Talent</span>
+</a>
+<a class="flex items-center gap-md p-sm rounded-lg text-on-surface-variant font-medium hover:bg-surface-container-highest transition-colors active:scale-95 duration-100" href="#">
+<span class="material-symbols-outlined" data-icon="factory">factory</span>
+<span>Infrastructure</span>
+</a>
+<!-- Active Tab: Projects (Mapped to Upgrades for this context) -->
+<a class="flex items-center gap-md p-sm rounded-lg text-primary font-bold border-r-2 border-primary bg-surface-container-highest transition-colors active:scale-95 duration-100" href="#">
+<span class="material-symbols-outlined" data-icon="assignment">assignment</span>
+<span>Upgrades</span>
+</a>
+<a class="flex items-center gap-md p-sm rounded-lg text-on-surface-variant font-medium hover:bg-surface-container-highest transition-colors active:scale-95 duration-100" href="#">
+<span class="material-symbols-outlined" data-icon="biotech">biotech</span>
+<span>R&amp;D</span>
+</a>
+<a class="flex items-center gap-md p-sm rounded-lg text-on-surface-variant font-medium hover:bg-surface-container-highest transition-colors active:scale-95 duration-100" href="#">
+<span class="material-symbols-outlined" data-icon="stars">stars</span>
+<span>Prestige</span>
+</a>
+</nav>
+<div class="mt-auto pt-md border-t border-outline-variant/20">
+<div class="flex items-center justify-between text-label-mono text-on-surface-variant px-sm">
+<span>Versão 4.2.0</span>
+<span class="material-symbols-outlined text-sm" data-icon="terminal">terminal</span>
+</div>
+</div>
+</aside>
+<!-- TopAppBar Integration -->
+<header class="fixed top-0 right-0 w-[calc(100%-16rem)] h-16 bg-surface/80 backdrop-blur-xl border-b border-outline-variant/30 flex justify-between items-center px-xl z-40">
+<div class="flex items-center gap-xl">
+<span class="font-headline-md text-headline-md font-black text-on-surface">Upgrades</span>
+<div class="flex items-center gap-lg font-label-mono text-label-mono">
+<span class="text-secondary">Market: STABLE</span>
+<span class="text-primary">Network: OPTIMAL</span>
+</div>
+</div>
+<div class="flex items-center gap-lg">
+<div class="text-right">
+<p class="font-label-mono text-label-mono text-primary leading-none">$4.2B</p>
+<p class="font-label-mono text-[10px] text-secondary leading-none">+12.5k/s</p>
+</div>
+<div class="flex items-center gap-md border-l border-outline-variant/30 pl-lg">
+<button class="material-symbols-outlined text-on-surface-variant hover:text-primary transition-all" data-icon="notifications">notifications</button>
+<button class="material-symbols-outlined text-on-surface-variant hover:text-primary transition-all" data-icon="settings">settings</button>
+</div>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="ml-64 pt-16 h-screen overflow-y-auto bg-surface-container-lowest">
+<div class="max-w-7xl mx-auto p-xl space-y-xl">
+<!-- Global Stats Header (Bento Style) -->
+<section class="grid grid-cols-1 md:grid-cols-4 gap-gutter">
+<div class="col-span-1 md:col-span-2 glass-card rounded-xl p-lg flex flex-col justify-between overflow-hidden relative">
+<div class="z-10">
+<p class="font-label-caps text-label-caps text-on-surface-variant uppercase mb-xs">Eficiência Global</p>
+<h2 class="font-display-currency text-display-currency text-primary">94.8%</h2>
+</div>
+<div class="mt-md h-1.5 w-full bg-surface-container-highest rounded-full overflow-hidden z-10">
+<div class="h-full bg-primary progress-bar-glow shadow-primary" style="width: 94.8%"></div>
+</div>
+<!-- Decorative Sparkline -->
+<div class="absolute bottom-0 right-0 opacity-20 pointer-events-none">
+<svg height="60" viewbox="0 0 200 60" width="200">
+<path class="text-primary" d="M0 40 Q 25 35, 50 45 T 100 20 T 150 30 T 200 10" fill="none" stroke="currentColor" stroke-width="2"></path>
+</svg>
+</div>
+</div>
+<div class="glass-card rounded-xl p-lg">
+<p class="font-label-caps text-label-caps text-on-surface-variant uppercase mb-xs">Taxa de Retenção</p>
+<h2 class="font-display-currency text-display-currency text-secondary">88.2%</h2>
+<p class="font-label-mono text-label-mono text-secondary-fixed-dim mt-sm">+1.2% este mês</p>
+</div>
+<div class="glass-card rounded-xl p-lg">
+<p class="font-label-caps text-label-caps text-on-surface-variant uppercase mb-xs">Upgrade Boost</p>
+<h2 class="font-display-currency text-display-currency text-tertiary">x2.5</h2>
+<p class="font-label-mono text-label-mono text-tertiary-fixed-dim mt-sm">Próximo em: 14h</p>
+</div>
+</section>
+<!-- Section 1: Ferramentas de Trabalho -->
+<section class="space-y-md">
+<div class="flex items-center justify-between border-b border-outline-variant/20 pb-sm">
+<h3 class="font-headline-md text-headline-md flex items-center gap-sm">
+<span class="material-symbols-outlined text-primary" data-icon="construction">construction</span>
+                        Ferramentas de Trabalho
+                    </h3>
+<span class="font-label-mono text-label-mono text-on-surface-variant">5 de 12 Adquiridos</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-gutter">
+<!-- Tool Card 1 -->
+<div class="glass-card rounded-xl p-md flex flex-col gap-md">
+<div class="flex justify-between items-start">
+<div class="p-sm bg-primary/10 rounded-lg text-primary">
+<span class="material-symbols-outlined text-2xl" data-icon="laptop">laptop</span>
+</div>
+<span class="bg-secondary-container text-on-secondary-container px-sm py-0.5 rounded font-label-caps text-[9px]">ATIVO</span>
+</div>
+<div>
+<h4 class="font-headline-md text-headline-md text-on-surface">Notebook de Elite</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-xs">Workstations de alto desempenho para o time de dev.</p>
+</div>
+<div class="flex items-center gap-sm bg-surface-container-lowest p-sm rounded-lg border border-outline-variant/10">
+<span class="material-symbols-outlined text-secondary text-sm" data-icon="bolt">bolt</span>
+<span class="font-label-mono text-label-mono">+15% Velocidade de Produção</span>
+</div>
+<button class="w-full mt-auto py-sm px-md rounded-lg bg-surface-container-highest text-on-surface-variant font-label-mono flex justify-between items-center opacity-60 cursor-not-allowed">
+<span>Adquirido</span>
+<span>$150k</span>
+</button>
+</div>
+<!-- Tool Card 2 -->
+<div class="glass-card rounded-xl p-md flex flex-col gap-md">
+<div class="flex justify-between items-start">
+<div class="p-sm bg-primary/10 rounded-lg text-primary">
+<span class="material-symbols-outlined text-2xl" data-icon="monitor">monitor</span>
+</div>
+</div>
+<div>
+<h4 class="font-headline-md text-headline-md text-on-surface">Monitor Ultra-wide</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-xs">Expanda o campo de visão e reduza alt-tabs excessivos.</p>
+</div>
+<div class="flex items-center gap-sm bg-surface-container-lowest p-sm rounded-lg border border-outline-variant/10">
+<span class="material-symbols-outlined text-secondary text-sm" data-icon="trending_up">trending_up</span>
+<span class="font-label-mono text-label-mono">+10% Foco Global</span>
+</div>
+<button class="w-full mt-auto py-sm px-md rounded-lg bg-primary text-on-primary font-label-mono flex justify-between items-center hover:brightness-110 hover:shadow-[0_0_15px_rgba(173,198,255,0.4)] transition-all">
+<span>Comprar</span>
+<span>$450k</span>
+</button>
+</div>
+<!-- Tool Card 3 -->
+<div class="glass-card rounded-xl p-md flex flex-col gap-md">
+<div class="flex justify-between items-start">
+<div class="p-sm bg-primary/10 rounded-lg text-primary">
+<span class="material-symbols-outlined text-2xl" data-icon="network_check">network_check</span>
+</div>
+</div>
+<div>
+<h4 class="font-headline-md text-headline-md text-on-surface">Fibra 10Gbps</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-xs">Conexão redundante ultrarrápida para zero downtime.</p>
+</div>
+<div class="flex items-center gap-sm bg-surface-container-lowest p-sm rounded-lg border border-outline-variant/10">
+<span class="material-symbols-outlined text-secondary text-sm" data-icon="speed">speed</span>
+<span class="font-label-mono text-label-mono">+25% Upload de Projetos</span>
+</div>
+<button class="w-full mt-auto py-sm px-md rounded-lg bg-primary text-on-primary font-label-mono flex justify-between items-center hover:brightness-110 transition-all">
+<span>Comprar</span>
+<span>$1.2M</span>
+</button>
+</div>
+<!-- Tool Card 4 -->
+<div class="glass-card rounded-xl p-md flex flex-col gap-md">
+<div class="flex justify-between items-start">
+<div class="p-sm bg-primary/10 rounded-lg text-primary">
+<span class="material-symbols-outlined text-2xl" data-icon="dns">dns</span>
+</div>
+</div>
+<div>
+<h4 class="font-headline-md text-headline-md text-on-surface">Servidor Próprio</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-xs">Datacenter in-house para segurança e autonomia total.</p>
+</div>
+<div class="flex items-center gap-sm bg-surface-container-lowest p-sm rounded-lg border border-outline-variant/10">
+<span class="material-symbols-outlined text-secondary text-sm" data-icon="shield">shield</span>
+<span class="font-label-mono text-label-mono">-15% Custos de Cloud</span>
+</div>
+<button class="w-full mt-auto py-sm px-md rounded-lg bg-primary text-on-primary font-label-mono flex justify-between items-center hover:brightness-110 transition-all">
+<span>Comprar</span>
+<span>$5.8M</span>
+</button>
+</div>
+<!-- Tool Card 5 -->
+<div class="glass-card rounded-xl p-md flex flex-col gap-md relative group">
+<div class="absolute inset-0 bg-tertiary/5 opacity-0 group-hover:opacity-100 transition-opacity rounded-xl"></div>
+<div class="flex justify-between items-start relative z-10">
+<div class="p-sm bg-tertiary/10 rounded-lg text-tertiary">
+<span class="material-symbols-outlined text-2xl" data-icon="smart_toy">smart_toy</span>
+</div>
+<span class="bg-tertiary text-on-tertiary px-sm py-0.5 rounded font-label-caps text-[9px]">LENDÁRIO</span>
+</div>
+<div class="relative z-10">
+<h4 class="font-headline-md text-headline-md text-on-surface">IA p/ Desenvolvedores</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-xs">Copiloto neural que escreve 40% do código base.</p>
+</div>
+<div class="flex items-center gap-sm bg-surface-container-lowest p-sm rounded-lg border border-tertiary/20 relative z-10">
+<span class="material-symbols-outlined text-tertiary text-sm" data-icon="psychology">psychology</span>
+<span class="font-label-mono text-label-mono">+50% Multiplicador de R&amp;D</span>
+</div>
+<button class="w-full mt-auto py-sm px-md rounded-lg bg-primary text-on-primary font-label-mono flex justify-between items-center hover:brightness-110 transition-all relative z-10">
+<span>Comprar</span>
+<span>$25M</span>
+</button>
+</div>
+</div>
+</section>
+<!-- Section 2: Benefícios & Cultura -->
+<section class="space-y-md">
+<div class="flex items-center justify-between border-b border-outline-variant/20 pb-sm">
+<h3 class="font-headline-md text-headline-md flex items-center gap-sm">
+<span class="material-symbols-outlined text-secondary" data-icon="favorite">favorite</span>
+                        Benefícios &amp; Cultura
+                    </h3>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-gutter">
+<!-- Benefit Card 1 -->
+<div class="glass-card rounded-xl p-md flex flex-col gap-md">
+<div class="flex justify-between items-start">
+<div class="p-sm bg-secondary/10 rounded-lg text-secondary">
+<span class="material-symbols-outlined text-2xl" data-icon="restaurant">restaurant</span>
+</div>
+</div>
+<div>
+<h4 class="font-headline-md text-headline-md text-on-surface">Refeição Premium</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-xs">Alimentação gourmet no escritório e vale flexível.</p>
+</div>
+<div class="flex items-center gap-sm bg-surface-container-lowest p-sm rounded-lg border border-outline-variant/10">
+<span class="material-symbols-outlined text-secondary text-sm" data-icon="mood">mood</span>
+<span class="font-label-mono text-label-mono">+8% Satisfação Geral</span>
+</div>
+<button class="w-full mt-auto py-sm px-md rounded-lg bg-primary text-on-primary font-label-mono flex justify-between items-center hover:brightness-110 transition-all">
+<span>Comprar</span>
+<span>$250k</span>
+</button>
+</div>
+<!-- Benefit Card 2 -->
+<div class="glass-card rounded-xl p-md flex flex-col gap-md">
+<div class="flex justify-between items-start">
+<div class="p-sm bg-secondary/10 rounded-lg text-secondary">
+<span class="material-symbols-outlined text-2xl" data-icon="medical_services">medical_services</span>
+</div>
+</div>
+<div>
+<h4 class="font-headline-md text-headline-md text-on-surface">Plano de Saúde Global</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-xs">Cobertura completa em qualquer lugar do mundo.</p>
+</div>
+<div class="flex items-center gap-sm bg-surface-container-lowest p-sm rounded-lg border border-outline-variant/10">
+<span class="material-symbols-outlined text-error text-sm" data-icon="keyboard_double_arrow_down">keyboard_double_arrow_down</span>
+<span class="font-label-mono text-label-mono">-5% Turnover Anual</span>
+</div>
+<button class="w-full mt-auto py-sm px-md rounded-lg bg-primary text-on-primary font-label-mono flex justify-between items-center hover:brightness-110 transition-all">
+<span>Comprar</span>
+<span>$800k</span>
+</button>
+</div>
+<!-- Benefit Card 3 -->
+<div class="glass-card rounded-xl p-md flex flex-col gap-md">
+<div class="flex justify-between items-start">
+<div class="p-sm bg-secondary/10 rounded-lg text-secondary">
+<span class="material-symbols-outlined text-2xl" data-icon="payments">payments</span>
+</div>
+</div>
+<div>
+<h4 class="font-headline-md text-headline-md text-on-surface">Performance Bonus</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-xs">Participação nos lucros trimestral (PLR).</p>
+</div>
+<div class="flex items-center gap-sm bg-surface-container-lowest p-sm rounded-lg border border-outline-variant/10">
+<span class="material-symbols-outlined text-secondary text-sm" data-icon="groups">groups</span>
+<span class="font-label-mono text-label-mono">+12% Retenção de Talentos</span>
+</div>
+<button class="w-full mt-auto py-sm px-md rounded-lg bg-primary text-on-primary font-label-mono flex justify-between items-center hover:brightness-110 transition-all">
+<span>Comprar</span>
+<span>$3.5M</span>
+</button>
+</div>
+</div>
+</section>
+</div>
+</main>
+<!-- Interactive Layer for Feedback -->
+<div class="fixed bottom-lg right-lg z-[100] pointer-events-none" id="toast-container"></div>
+<script>
+        // Simple Interaction logic for buying
+        const buyButtons = document.querySelectorAll('button:not(.cursor-not-allowed)');
+        buyButtons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const label = btn.closest('.glass-card').querySelector('h4').innerText;
+                const price = btn.querySelectorAll('span')[1].innerText;
+                
+                showToast(`Adquirido: ${label} por ${price}`);
+                btn.classList.add('opacity-60', 'cursor-not-allowed', 'pointer-events-none');
+                btn.querySelector('span:first-child').innerText = 'Adquirido';
+                
+                // Visual feedback
+                const card = btn.closest('.glass-card');
+                card.classList.add('ring-2', 'ring-secondary');
+                setTimeout(() => card.classList.remove('ring-2'), 1000);
+            });
+        });
+
+        function showToast(message) {
+            const toast = document.createElement('div');
+            toast.className = 'pointer-events-auto flex items-center gap-md p-md bg-surface-container-highest border border-primary/20 rounded-lg shadow-xl mb-md animate-slide-up transition-all';
+            toast.innerHTML = `
+                <span class="material-symbols-outlined text-secondary" data-icon="check_circle">check_circle</span>
+                <span class="font-label-mono text-on-surface">${message}</span>
+            `;
+            document.getElementById('toast-container').appendChild(toast);
+            setTimeout(() => {
+                toast.style.opacity = '0';
+                toast.style.transform = 'translateY(10px)';
+                setTimeout(() => toast.remove(), 300);
+            }, 3000);
+        }
+
+        // Atmospheric Sparkline Animation logic (Fake)
+        const sparklinePaths = document.querySelectorAll('path');
+        sparklinePaths.forEach(path => {
+            setInterval(() => {
+                const h1 = Math.floor(Math.random() * 40 + 10);
+                const h2 = Math.floor(Math.random() * 40 + 10);
+                const h3 = Math.floor(Math.random() * 40 + 10);
+                path.setAttribute('d', `M0 40 Q 25 ${h1}, 50 ${h2} T 100 ${h3} T 150 ${h1} T 200 10`);
+            }, 3000);
+        });
+    </script>
+<style>
+        @keyframes slide-up {
+            from { transform: translateY(20px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        .animate-slide-up {
+            animation: slide-up 0.4s ease-out forwards;
+        }
+    </style>
+</body></html>

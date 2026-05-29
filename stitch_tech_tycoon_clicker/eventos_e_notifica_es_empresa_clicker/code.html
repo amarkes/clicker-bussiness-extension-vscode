@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="pt-BR"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-background": "#dae2fd",
+                    "surface-tint": "#adc6ff",
+                    "inverse-primary": "#005ac2",
+                    "outline-variant": "#424754",
+                    "surface-bright": "#31394d",
+                    "surface": "#0b1326",
+                    "on-secondary": "#003824",
+                    "secondary": "#4edea3",
+                    "secondary-container": "#00a572",
+                    "background": "#0b1326",
+                    "secondary-fixed-dim": "#4edea3",
+                    "secondary-fixed": "#6ffbbe",
+                    "on-primary-fixed": "#001a42",
+                    "error-container": "#93000a",
+                    "tertiary-fixed": "#e9ddff",
+                    "surface-dim": "#0b1326",
+                    "on-error-container": "#ffdad6",
+                    "on-tertiary-fixed-variant": "#5516be",
+                    "tertiary": "#d0bcff",
+                    "primary-fixed": "#d8e2ff",
+                    "primary-container": "#4d8eff",
+                    "on-secondary-fixed": "#002113",
+                    "primary": "#adc6ff",
+                    "surface-variant": "#2d3449",
+                    "outline": "#8c909f",
+                    "on-tertiary-fixed": "#23005c",
+                    "on-secondary-container": "#00311f",
+                    "on-primary-fixed-variant": "#004395",
+                    "error": "#ffb4ab",
+                    "tertiary-fixed-dim": "#d0bcff",
+                    "on-tertiary-container": "#340080",
+                    "inverse-surface": "#dae2fd",
+                    "on-tertiary": "#3c0091",
+                    "on-secondary-fixed-variant": "#005236",
+                    "surface-container-lowest": "#060e20",
+                    "inverse-on-surface": "#283044",
+                    "surface-container": "#171f33",
+                    "on-error": "#690005",
+                    "surface-container-high": "#222a3d",
+                    "surface-container-highest": "#2d3449",
+                    "tertiary-container": "#a078ff",
+                    "primary-fixed-dim": "#adc6ff",
+                    "on-surface": "#dae2fd",
+                    "on-primary-container": "#00285d",
+                    "on-primary": "#002e6a",
+                    "on-surface-variant": "#c2c6d6",
+                    "surface-container-low": "#131b2e"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "base": "4px",
+                    "sm": "8px",
+                    "md": "16px",
+                    "margin-desktop": "40px",
+                    "gutter": "16px",
+                    "margin-mobile": "16px",
+                    "xl": "32px",
+                    "xs": "4px",
+                    "lg": "24px"
+            },
+            "fontFamily": {
+                    "headline-lg": ["Inter"],
+                    "body-sm": ["Inter"],
+                    "label-caps": ["Inter"],
+                    "label-mono": ["JetBrains Mono"],
+                    "display-currency": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "headline-md": ["Inter"]
+            },
+            "fontSize": {
+                    "headline-lg": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "label-caps": ["11px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "700"}],
+                    "label-mono": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                    "display-currency": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .glass-card {
+            background: rgba(23, 31, 51, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        .progress-glow {
+            box-shadow: 0 0 8px var(--secondary);
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .event-overlay {
+            background: rgba(6, 14, 32, 0.85);
+            backdrop-filter: blur(4px);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-lg min-h-screen overflow-hidden">
+<!-- Top App Bar (Shared Component) -->
+<header class="fixed top-0 left-0 w-full z-40 flex justify-between items-center px-md h-16 bg-surface-container border-b border-outline-variant/10 shadow-sm">
+<div class="flex items-center gap-md">
+<span class="font-headline-lg text-headline-lg font-black text-primary">Capitalize OS</span>
+</div>
+<div class="flex items-center gap-md">
+<button class="bg-primary-container text-on-primary-container px-md py-sm rounded-lg font-label-mono text-label-mono hover:bg-surface-variant transition-colors scale-95 duration-100">
+                Boost Active
+            </button>
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer">notifications</span>
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer">settings</span>
+<div class="w-8 h-8 rounded-full bg-surface-variant flex items-center justify-center overflow-hidden">
+<img alt="User Profile Avatar" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB_BLm_gHZn4n-B8KNV-2IOSg8bjafPB9vRuuz1wc9_uqtaGGc-EpqiYXlwlxFUuPsIFFL6N95Q4ruoV-RNMpiCYbT5NQqyp3ys12Rvkj0FjhenHdFUwDLOKlIxTi_7HcqtcJoe5duIdwJT57Ldwce6RKu72x8GJ-1ImfQkoYzPEslUj5YiApURKiFHmbrMC2ebZzK2r8Imi0S8Z5rak57UC60mAnL0wqTkagh1vSEwoSINM5vYgxgFuJLvQxR0gz-pQDZmNvX1iNod"/>
+</div>
+</div>
+</header>
+<!-- Side Navigation (Shared Component) -->
+<nav class="fixed left-0 top-0 h-full flex flex-col pt-20 pb-md w-64 z-30 bg-surface border-r border-outline-variant/10">
+<div class="px-md mb-lg">
+<div class="flex items-center gap-md mb-xs">
+<span class="font-headline-md text-headline-md text-on-surface">Global Ops</span>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Series A Funding</span>
+</div>
+<div class="flex-1 flex flex-col gap-xs px-sm">
+<!-- Active Tab: Dashboard -->
+<a class="flex items-center gap-md bg-primary-container text-on-primary-container rounded-lg px-md py-sm translate-x-1 transition-transform" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-label-caps text-label-caps">DASHBOARD</span>
+</a>
+<a class="flex items-center gap-md text-on-surface-variant px-md py-sm hover:bg-surface-variant/50 hover:text-on-surface transition-colors" href="#">
+<span class="material-symbols-outlined">groups</span>
+<span class="font-label-caps text-label-caps">TALENT</span>
+</a>
+<a class="flex items-center gap-md text-on-surface-variant px-md py-sm hover:bg-surface-variant/50 hover:text-on-surface transition-colors" href="#">
+<span class="material-symbols-outlined">factory</span>
+<span class="font-label-caps text-label-caps">INFRASTRUCTURE</span>
+</a>
+<a class="flex items-center gap-md text-on-surface-variant px-md py-sm hover:bg-surface-variant/50 hover:text-on-surface transition-colors" href="#">
+<span class="material-symbols-outlined">account_tree</span>
+<span class="font-label-caps text-label-caps">PROJECTS</span>
+</a>
+<a class="flex items-center gap-md text-on-surface-variant px-md py-sm hover:bg-surface-variant/50 hover:text-on-surface transition-colors" href="#">
+<span class="material-symbols-outlined">biotech</span>
+<span class="font-label-caps text-label-caps">R&amp;D</span>
+</a>
+<a class="flex items-center gap-md text-on-surface-variant px-md py-sm hover:bg-surface-variant/50 hover:text-on-surface transition-colors" href="#">
+<span class="material-symbols-outlined">military_tech</span>
+<span class="font-label-caps text-label-caps">PRESTIGE</span>
+</a>
+</div>
+<div class="px-md mt-auto pt-md flex flex-col gap-sm">
+<button class="w-full bg-secondary text-on-secondary font-label-caps text-label-caps py-sm rounded-lg flex items-center justify-center gap-sm">
+<span class="material-symbols-outlined text-[18px]">map</span>
+                EXPANSION MAP
+            </button>
+<div class="h-px bg-outline-variant/20 my-xs"></div>
+<a class="flex items-center gap-md text-on-surface-variant px-md py-sm hover:bg-surface-variant/50 transition-colors" href="#">
+<span class="material-symbols-outlined">manage_accounts</span>
+<span class="font-label-caps text-label-caps">ACCOUNT</span>
+</a>
+<a class="flex items-center gap-md text-on-surface-variant px-md py-sm hover:bg-surface-variant/50 transition-colors" href="#">
+<span class="material-symbols-outlined">logout</span>
+<span class="font-label-caps text-label-caps">LOG OUT</span>
+</a>
+</div>
+</nav>
+<!-- Main Content (Dashboard Background) -->
+<main class="ml-64 pt-20 p-md h-screen overflow-y-auto">
+<!-- Dashboard Metrics Header -->
+<div class="grid grid-cols-4 gap-md mb-lg">
+<div class="glass-card p-md rounded-xl">
+<p class="font-label-caps text-label-caps text-on-surface-variant mb-sm uppercase">Total Capital</p>
+<h2 class="font-display-currency text-display-currency text-primary">R$ 1.24M</h2>
+<p class="font-label-mono text-label-mono text-secondary">+R$ 4.2k / sec</p>
+</div>
+<div class="glass-card p-md rounded-xl">
+<p class="font-label-caps text-label-caps text-on-surface-variant mb-sm uppercase">Active Units</p>
+<h2 class="font-display-currency text-display-currency text-on-surface">14</h2>
+<p class="font-label-mono text-label-mono text-on-surface-variant">Efficiency: 94%</p>
+</div>
+<div class="glass-card p-md rounded-xl">
+<p class="font-label-caps text-label-caps text-on-surface-variant mb-sm uppercase">R&amp;D Velocity</p>
+<h2 class="font-display-currency text-display-currency text-tertiary">3.4x</h2>
+<div class="w-full bg-surface-variant h-1 rounded-full mt-sm">
+<div class="bg-tertiary h-full w-2/3 rounded-full"></div>
+</div>
+</div>
+<div class="glass-card p-md rounded-xl">
+<p class="font-label-caps text-label-caps text-on-surface-variant mb-sm uppercase">Market Share</p>
+<h2 class="font-display-currency text-display-currency text-secondary">0.02%</h2>
+<p class="font-label-mono text-label-mono text-on-surface-variant">Next: 0.05%</p>
+</div>
+</div>
+<!-- Bento Grid Business Units (Background) -->
+<div class="grid grid-cols-12 gap-md">
+<div class="col-span-8 grid grid-cols-1 gap-md">
+<div class="glass-card p-md rounded-xl flex items-center justify-between">
+<div class="flex items-center gap-md">
+<div class="w-12 h-12 bg-primary-container/20 rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined text-primary">terminal</span>
+</div>
+<div>
+<h3 class="font-headline-md text-headline-md">Software Factory</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Level 42 · Automation 60%</p>
+</div>
+</div>
+<div class="text-right">
+<p class="font-label-mono text-label-mono text-secondary">R$ 1.5k / cycle</p>
+<div class="w-48 bg-surface-variant h-1.5 rounded-full mt-sm relative overflow-hidden">
+<div class="bg-secondary h-full w-[85%] progress-glow"></div>
+</div>
+</div>
+</div>
+<div class="glass-card p-md rounded-xl flex items-center justify-between">
+<div class="flex items-center gap-md">
+<div class="w-12 h-12 bg-tertiary-container/20 rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined text-tertiary">database</span>
+</div>
+<div>
+<h3 class="font-headline-md text-headline-md">Data Center Alpha</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Level 18 · Power Optimized</p>
+</div>
+</div>
+<div class="text-right">
+<p class="font-label-mono text-label-mono text-secondary">R$ 2.8k / cycle</p>
+<div class="w-48 bg-surface-variant h-1.5 rounded-full mt-sm relative overflow-hidden">
+<div class="bg-secondary h-full w-[40%]"></div>
+</div>
+</div>
+</div>
+</div>
+<div class="col-span-4 glass-card p-md rounded-xl">
+<h3 class="font-label-caps text-label-caps text-on-surface-variant mb-md border-b border-outline-variant/20 pb-xs">LATEST OPERATIONS</h3>
+<div class="space-y-md">
+<div class="flex items-start gap-md">
+<span class="material-symbols-outlined text-secondary text-sm mt-1">check_circle</span>
+<div>
+<p class="font-body-sm text-body-sm">Upgrade completed: Server Rack #4</p>
+<p class="font-label-mono text-[10px] text-on-surface-variant">2m ago</p>
+</div>
+</div>
+<div class="flex items-start gap-md opacity-50">
+<span class="material-symbols-outlined text-primary text-sm mt-1">trending_up</span>
+<div>
+<p class="font-body-sm text-body-sm">Dividend payout: R$ 45.000</p>
+<p class="font-label-mono text-[10px] text-on-surface-variant">15m ago</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Event Overlay & Modal System -->
+<div class="fixed inset-0 z-50 flex items-center justify-center event-overlay">
+<!-- High Fidelity Modal -->
+<div class="glass-card w-full max-w-lg p-xl rounded-2xl shadow-2xl relative overflow-hidden animate-in fade-in zoom-in duration-300">
+<!-- Decorative Accent Line -->
+<div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary via-tertiary to-secondary"></div>
+<div class="flex flex-col items-center text-center">
+<div class="w-20 h-20 rounded-full bg-primary-container/20 flex items-center justify-center mb-lg">
+<span class="material-symbols-outlined text-[48px] text-primary" style="font-variation-settings: 'FILL' 1;">business_center</span>
+</div>
+<span class="font-label-caps text-label-caps bg-primary/10 text-primary px-md py-1 rounded-full mb-md tracking-widest">EVENTO CRÍTICO</span>
+<h2 class="font-headline-lg text-headline-lg text-on-surface mb-md">Investidor Anjo Interessa</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant mb-xl px-md">
+                    Um investidor de renome do Vale do Silício notou o crescimento exponencial da sua Software Factory. Ele oferece um aporte imediato para acelerar sua expansão global em troca de participação societária.
+                </p>
+<!-- Impact Stats -->
+<div class="grid grid-cols-2 gap-md w-full mb-xl">
+<div class="bg-surface-container-high p-md rounded-xl border border-outline-variant/10">
+<p class="font-label-caps text-label-caps text-on-surface-variant mb-xs">CASH FLOW</p>
+<p class="font-headline-md text-headline-md text-secondary">+R$ 250.000</p>
+</div>
+<div class="bg-surface-container-high p-md rounded-xl border border-outline-variant/10">
+<p class="font-label-caps text-label-caps text-on-surface-variant mb-xs">EQUITY COST</p>
+<p class="font-headline-md text-headline-md text-error">-5% Ownership</p>
+</div>
+</div>
+<!-- Actions -->
+<div class="flex flex-col w-full gap-md">
+<button class="w-full bg-primary text-on-primary font-headline-md text-headline-md py-md rounded-xl hover:brightness-110 active:scale-[0.98] transition-all flex items-center justify-center gap-md">
+                        Aceitar Aporte
+                        <span class="material-symbols-outlined">trending_up</span>
+</button>
+<button class="w-full border border-primary/40 text-primary font-headline-md text-headline-md py-md rounded-xl hover:bg-primary/10 active:scale-[0.98] transition-all">
+                        Negociar Termos
+                    </button>
+</div>
+</div>
+<!-- Close Button (Secondary) -->
+<button class="absolute top-md right-md text-on-surface-variant hover:text-on-surface transition-colors">
+<span class="material-symbols-outlined">close</span>
+</button>
+</div>
+</div>
+<!-- Toast Notification (Minor Event) -->
+<div class="fixed bottom-lg right-lg z-[60] animate-in slide-in-from-right-10 duration-500">
+<div class="glass-card p-md rounded-xl flex items-center gap-md border-l-4 border-secondary shadow-lg min-w-[300px]">
+<div class="w-10 h-10 rounded-lg bg-secondary/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1;">bug_report</span>
+</div>
+<div class="flex-1">
+<h4 class="font-label-caps text-label-caps text-on-surface">Bug em Produção Resolvido</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Sistema otimizado com sucesso.</p>
+</div>
+<div class="text-right">
+<p class="font-label-mono text-label-mono text-secondary">+R$ 5k</p>
+</div>
+</div>
+</div>
+<!-- Background Decorative Elements -->
+<div class="fixed top-0 left-0 w-full h-full pointer-events-none z-[-1] overflow-hidden">
+<div class="absolute top-[-10%] right-[-10%] w-96 h-96 bg-primary/10 blur-[120px] rounded-full"></div>
+<div class="absolute bottom-[-10%] left-[20%] w-80 h-80 bg-secondary/5 blur-[100px] rounded-full"></div>
+</div>
+<script>
+        // Simple micro-interaction for the progress bars
+        document.querySelectorAll('.progress-glow').forEach(bar => {
+            setInterval(() => {
+                const currentWidth = parseFloat(bar.style.width) || 85;
+                const nextWidth = (currentWidth + 0.5) % 100;
+                bar.style.width = nextWidth + '%';
+            }, 50);
+        });
+
+        // Modal entrance sound/visual effect placeholder
+        console.log("CRITICAL EVENT TRIGGERED: Investidor Anjo Interessa");
+    </script>
+</body></html>

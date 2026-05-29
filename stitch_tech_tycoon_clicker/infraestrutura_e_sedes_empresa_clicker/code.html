@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="pt-br"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-secondary": "#003824",
+                    "primary": "#adc6ff",
+                    "on-primary-container": "#00285d",
+                    "on-tertiary-container": "#340080",
+                    "on-tertiary-fixed": "#23005c",
+                    "on-secondary-fixed-variant": "#005236",
+                    "primary-container": "#4d8eff",
+                    "error": "#ffb4ab",
+                    "surface-container-low": "#131b2e",
+                    "tertiary-fixed-dim": "#d0bcff",
+                    "on-surface": "#dae2fd",
+                    "inverse-on-surface": "#283044",
+                    "on-primary-fixed-variant": "#004395",
+                    "background": "#0b1326",
+                    "on-tertiary-fixed-variant": "#5516be",
+                    "secondary-container": "#00a572",
+                    "secondary-fixed-dim": "#4edea3",
+                    "inverse-surface": "#dae2fd",
+                    "surface-container": "#171f33",
+                    "on-error-container": "#ffdad6",
+                    "error-container": "#93000a",
+                    "surface-variant": "#2d3449",
+                    "on-primary-fixed": "#001a42",
+                    "secondary": "#4edea3",
+                    "outline": "#8c909f",
+                    "surface-container-high": "#222a3d",
+                    "surface-container-lowest": "#060e20",
+                    "on-error": "#690005",
+                    "on-secondary-fixed": "#002113",
+                    "tertiary": "#d0bcff",
+                    "primary-fixed-dim": "#adc6ff",
+                    "on-secondary-container": "#00311f",
+                    "tertiary-fixed": "#e9ddff",
+                    "secondary-fixed": "#6ffbbe",
+                    "inverse-primary": "#005ac2",
+                    "surface-tint": "#adc6ff",
+                    "primary-fixed": "#d8e2ff",
+                    "on-background": "#dae2fd",
+                    "surface-dim": "#0b1326",
+                    "on-surface-variant": "#c2c6d6",
+                    "surface-container-highest": "#2d3449",
+                    "on-tertiary": "#3c0091",
+                    "surface": "#0b1326",
+                    "on-primary": "#002e6a",
+                    "outline-variant": "#424754",
+                    "surface-bright": "#31394d",
+                    "tertiary-container": "#a078ff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "gutter": "16px",
+                    "md": "16px",
+                    "margin-desktop": "40px",
+                    "xl": "32px",
+                    "xs": "4px",
+                    "lg": "24px",
+                    "base": "4px",
+                    "sm": "8px",
+                    "margin-mobile": "16px"
+            },
+            "fontFamily": {
+                    "headline-md": ["Inter"],
+                    "display-currency": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "label-caps": ["Inter"],
+                    "body-sm": ["Inter"],
+                    "label-mono": ["JetBrains Mono"],
+                    "display-currency-mobile": ["Inter"]
+            },
+            "fontSize": {
+                    "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "display-currency": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "headline-lg": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "label-caps": ["11px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "700"}],
+                    "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "label-mono": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                    "display-currency-mobile": ["32px", {"lineHeight": "36px", "fontWeight": "700"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .glass-card {
+            background: rgba(23, 31, 51, 0.4);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(140, 144, 159, 0.1);
+        }
+        .glow-primary {
+            box-shadow: 0 0 20px rgba(173, 198, 255, 0.1);
+        }
+        .progress-glow {
+            box-shadow: 0 0 8px rgba(78, 222, 163, 0.5);
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body-sm min-h-screen selection:bg-primary selection:text-on-primary-container">
+<!-- Top Navigation Shell -->
+<nav class="bg-surface/80 backdrop-blur-xl dark:bg-surface/80 docked full-width top-0 sticky z-50 border-b border-outline-variant/30 shadow-sm flex justify-between items-center px-gutter py-sm w-full">
+<div class="flex items-center gap-md">
+<span class="font-headline-lg text-headline-lg font-black tracking-tight text-primary">Empresa Clicker</span>
+</div>
+<div class="hidden md:flex gap-lg items-center">
+<div class="flex flex-col items-end">
+<span class="font-label-mono text-label-mono text-secondary">$2.4B</span>
+<span class="font-body-sm text-[10px] text-on-surface-variant/70">$450k/s</span>
+</div>
+<div class="flex gap-sm">
+<button class="p-2 text-on-surface-variant hover:text-primary transition-colors duration-200">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="p-2 text-on-surface-variant hover:text-primary transition-colors duration-200">
+<span class="material-symbols-outlined">settings</span>
+</button>
+</div>
+<img alt="CEO Avatar" class="w-8 h-8 rounded-full border border-primary/20" data-alt="A professional close-up headshot of a futuristic corporate CEO in a sleek, dark tech environment. The avatar shows a person with a focused expression, subtle cybernetic enhancements on the temple, wearing a high-collared navy suit. The lighting is low-key with sharp blue highlights, consistent with a high-stakes management dashboard aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC09OUC-shfbpicvEApnPXyKso3l1669MsDr_9ewv-aw3aSrwH_YHYh6eCMfC0ftO2p-sLqu1UYyEqqJF9Ob-DkNEGmqAIvyfrXRp7FcYNbDZ4adXizAv-fO_u-iqTN45qmuJhw9PwOKYlh405ZDf8GoroxluTMOwzcc5Kxx63Jr6ekx9qG5qu2ZLzbdNRelNWJG4JJjz6yEvylBooRT_iLGI9NouoKU8U-ulqjVn8MF5_95UFvC3CQgSAvr82RFjD8yXkqwLEC7jNH"/>
+</div>
+</nav>
+<!-- Sidebar Shell -->
+<aside class="h-screen w-64 fixed left-0 top-0 hidden md:flex flex-col bg-surface-container-low border-r border-outline-variant/20 p-md space-y-sm pt-24">
+<div class="mb-lg px-2">
+<h2 class="font-headline-md text-headline-md font-bold text-primary">Infraestrutura</h2>
+<p class="text-on-surface-variant font-label-mono text-[10px]">OPERATIONS CENTER</p>
+</div>
+<a class="flex items-center gap-md p-3 text-on-surface-variant hover:bg-surface-variant/50 hover:text-on-surface transition-all rounded-lg" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-label-mono text-label-mono uppercase tracking-wider">Dashboard</span>
+</a>
+<a class="flex items-center gap-md p-3 text-on-surface-variant hover:bg-surface-variant/50 hover:text-on-surface transition-all rounded-lg" href="#">
+<span class="material-symbols-outlined">groups</span>
+<span class="font-label-mono text-label-mono uppercase tracking-wider">Talent</span>
+</a>
+<a class="flex items-center gap-md p-3 text-primary border-r-4 border-primary bg-primary/10 transition-all rounded-lg" href="#">
+<span class="material-symbols-outlined">domain</span>
+<span class="font-label-mono text-label-mono uppercase tracking-wider">Infrastructure</span>
+</a>
+<a class="flex items-center gap-md p-3 text-on-surface-variant hover:bg-surface-variant/50 hover:text-on-surface transition-all rounded-lg" href="#">
+<span class="material-symbols-outlined">assignment</span>
+<span class="font-label-mono text-label-mono uppercase tracking-wider">Projects</span>
+</a>
+<a class="flex items-center gap-md p-3 text-on-surface-variant hover:bg-surface-variant/50 hover:text-on-surface transition-all rounded-lg" href="#">
+<span class="material-symbols-outlined">science</span>
+<span class="font-label-mono text-label-mono uppercase tracking-wider">R&amp;D</span>
+</a>
+<div class="mt-auto pt-lg border-t border-outline-variant/20">
+<button class="w-full bg-primary text-on-primary-container font-label-mono text-label-mono p-3 rounded-lg flex items-center justify-center gap-sm active:scale-[0.98] transition-transform">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+                PRESTIGE
+            </button>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="md:ml-64 p-gutter md:p-margin-desktop pb-32">
+<!-- Header Section -->
+<header class="mb-xl">
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-md">
+<div>
+<h1 class="font-headline-lg text-headline-lg text-on-surface mb-xs">Infraestrutura e Sedes</h1>
+<p class="font-body-sm text-on-surface-variant max-w-2xl">
+                        Expanda o domínio físico da sua empresa. Upgrades de sede aumentam a capacidade máxima de colaboradores e desbloqueiam projetos de alto nível.
+                    </p>
+</div>
+<div class="glass-card p-md rounded-xl flex items-center gap-xl glow-primary">
+<div class="flex flex-col">
+<span class="font-label-caps text-label-caps text-on-surface-variant uppercase">Localização Atual</span>
+<span class="font-headline-md text-headline-md text-primary">Home Office</span>
+</div>
+<div class="h-10 w-px bg-outline-variant/30"></div>
+<div class="flex flex-col">
+<span class="font-label-caps text-label-caps text-on-surface-variant uppercase">Capacidade</span>
+<span class="font-headline-md text-headline-md text-secondary">2 / 2</span>
+</div>
+<div class="h-10 w-px bg-outline-variant/30"></div>
+<div class="flex flex-col">
+<span class="font-label-caps text-label-caps text-on-surface-variant uppercase">Bônus Prod.</span>
+<span class="font-headline-md text-headline-md text-tertiary">+0%</span>
+</div>
+</div>
+</div>
+</header>
+<!-- Office Progression Grid -->
+<section class="mb-xl">
+<div class="flex items-center justify-between mb-md">
+<h3 class="font-headline-md text-headline-md flex items-center gap-sm">
+<span class="material-symbols-outlined text-primary">location_on</span>
+                    Upgrades de Sede
+                </h3>
+<span class="font-label-mono text-label-mono text-on-surface-variant">6 DISPONÍVEIS</span>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-md">
+<!-- Office Card: Active/Owned -->
+<div class="glass-card p-md rounded-xl border-primary/40 relative overflow-hidden group">
+<div class="absolute top-0 right-0 p-2">
+<span class="bg-primary/20 text-primary font-label-caps text-[10px] px-2 py-0.5 rounded-full border border-primary/30">ATIVO</span>
+</div>
+<div class="flex items-start gap-md mb-md">
+<div class="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[32px]">home</span>
+</div>
+<div>
+<h4 class="font-headline-md text-headline-md">Home Office</h4>
+<p class="text-on-surface-variant text-xs">O começo de todo império tech.</p>
+</div>
+</div>
+<div class="space-y-sm mb-lg">
+<div class="flex justify-between font-label-mono text-label-mono">
+<span class="text-on-surface-variant">Capacidade de Equipe</span>
+<span class="text-on-surface">+2 Colaboradores</span>
+</div>
+<div class="flex justify-between font-label-mono text-label-mono">
+<span class="text-on-surface-variant">Bônus de Projetos</span>
+<span class="text-on-surface">Base</span>
+</div>
+</div>
+<button class="w-full py-3 bg-surface-variant/30 text-on-surface-variant font-label-mono text-label-mono rounded-lg cursor-not-allowed" disabled="">
+                        SEDE ATUAL
+                    </button>
+</div>
+<!-- Office Card: Next Available -->
+<div class="glass-card p-md rounded-xl hover:border-primary/50 transition-all duration-300 group">
+<div class="flex items-start gap-md mb-md">
+<div class="w-12 h-12 rounded-lg bg-surface-container-highest flex items-center justify-center text-on-surface-variant group-hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[32px]">business</span>
+</div>
+<div>
+<h4 class="font-headline-md text-headline-md">Sala Comercial</h4>
+<p class="text-on-surface-variant text-xs">Um espaço profissional para crescer.</p>
+</div>
+</div>
+<div class="space-y-sm mb-lg">
+<div class="flex justify-between font-label-mono text-label-mono">
+<span class="text-on-surface-variant">Capacidade de Equipe</span>
+<span class="text-secondary">+5 Colaboradores</span>
+</div>
+<div class="flex justify-between font-label-mono text-label-mono">
+<span class="text-on-surface-variant">Bônus de Eficiência</span>
+<span class="text-secondary">+10% Multiplier</span>
+</div>
+</div>
+<button class="w-full flex font-label-mono text-label-mono rounded-lg overflow-hidden active:scale-95 transition-transform">
+<span class="flex-1 bg-primary text-on-primary-container py-3">MUDAR DE SEDE</span>
+<span class="bg-on-primary-container text-primary-fixed px-4 py-3 border-l border-primary/20">R$ 5.000</span>
+</button>
+</div>
+<!-- Office Card: Locked -->
+<div class="glass-card p-md rounded-xl opacity-60 grayscale-[0.5] relative">
+<div class="absolute inset-0 z-10 flex items-center justify-center bg-background/20 backdrop-blur-[1px] rounded-xl">
+<span class="material-symbols-outlined text-4xl text-outline/50">lock</span>
+</div>
+<div class="flex items-start gap-md mb-md">
+<div class="w-12 h-12 rounded-lg bg-surface-container-highest flex items-center justify-center text-on-surface-variant">
+<span class="material-symbols-outlined text-[32px]">groups</span>
+</div>
+<div>
+<h4 class="font-headline-md text-headline-md">Coworking</h4>
+<p class="text-on-surface-variant text-xs">Networking e cafeína ilimitada.</p>
+</div>
+</div>
+<div class="space-y-sm mb-lg">
+<div class="flex justify-between font-label-mono text-label-mono">
+<span class="text-on-surface-variant">Capacidade de Equipe</span>
+<span class="text-secondary">+12 Colaboradores</span>
+</div>
+<div class="flex justify-between font-label-mono text-label-mono">
+<span class="text-on-surface-variant">Custo Manutenção</span>
+<span class="text-error">-R$ 1k/mês</span>
+</div>
+</div>
+<button class="w-full py-3 bg-surface-variant/20 text-on-surface-variant/50 font-label-mono text-label-mono rounded-lg" disabled="">
+                        R$ 50.000
+                    </button>
+</div>
+<!-- Office Card: High Tier (Locked) -->
+<div class="glass-card p-md rounded-xl opacity-40 grayscale relative hidden xl:block">
+<div class="absolute inset-0 z-10 flex items-center justify-center rounded-xl">
+<span class="material-symbols-outlined text-4xl text-outline/30">lock</span>
+</div>
+<div class="flex items-start gap-md mb-md">
+<div class="w-12 h-12 rounded-lg bg-surface-container-highest flex items-center justify-center text-on-surface-variant">
+<span class="material-symbols-outlined text-[32px]">domain</span>
+</div>
+<div>
+<h4 class="font-headline-md text-headline-md">Escritório Próprio</h4>
+<p class="text-on-surface-variant text-xs">Seu nome na fachada do prédio.</p>
+</div>
+</div>
+<button class="w-full py-3 bg-surface-variant/20 text-on-surface-variant/50 font-label-mono text-label-mono rounded-lg" disabled="">
+                        R$ 500.000
+                    </button>
+</div>
+<!-- Office Card: Luxury Tier (Locked) -->
+<div class="glass-card p-md rounded-xl opacity-40 grayscale relative hidden xl:block">
+<div class="absolute inset-0 z-10 flex items-center justify-center rounded-xl">
+<span class="material-symbols-outlined text-4xl text-outline/30">lock</span>
+</div>
+<div class="flex items-start gap-md mb-md">
+<div class="w-12 h-12 rounded-lg bg-surface-container-highest flex items-center justify-center text-on-surface-variant">
+<span class="material-symbols-outlined text-[32px]">apartment</span>
+</div>
+<div>
+<h4 class="font-headline-md text-headline-md">Andar Corporativo</h4>
+<p class="text-on-surface-variant text-xs">Domine o topo do arranha-céu.</p>
+</div>
+</div>
+<button class="w-full py-3 bg-surface-variant/20 text-on-surface-variant/50 font-label-mono text-label-mono rounded-lg" disabled="">
+                        R$ 5.000.000
+                    </button>
+</div>
+<!-- Office Card: Elite Tier (Locked) -->
+<div class="glass-card p-md rounded-xl opacity-40 grayscale relative hidden xl:block">
+<div class="absolute inset-0 z-10 flex items-center justify-center rounded-xl">
+<span class="material-symbols-outlined text-4xl text-outline/30">lock</span>
+</div>
+<div class="flex items-start gap-md mb-md">
+<div class="w-12 h-12 rounded-lg bg-surface-container-highest flex items-center justify-center text-on-surface-variant">
+<span class="material-symbols-outlined text-[32px]">location_city</span>
+</div>
+<div>
+<h4 class="font-headline-md text-headline-md">Sede Empresarial</h4>
+<p class="text-on-surface-variant text-xs">Um monumento ao seu sucesso.</p>
+</div>
+</div>
+<button class="w-full py-3 bg-surface-variant/20 text-on-surface-variant/50 font-label-mono text-label-mono rounded-lg" disabled="">
+                        R$ 50.000.000
+                    </button>
+</div>
+</div>
+</section>
+<!-- Facility Perks Section -->
+<section>
+<div class="flex items-center justify-between mb-md">
+<h3 class="font-headline-md text-headline-md flex items-center gap-sm">
+<span class="material-symbols-outlined text-secondary">bolt</span>
+                    Perks de Infraestrutura
+                </h3>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-md">
+<!-- Perk 1 -->
+<button class="glass-card p-sm rounded-xl flex flex-col items-center text-center gap-sm hover:bg-surface-variant/30 active:scale-95 transition-all">
+<div class="w-10 h-10 rounded-full bg-secondary/10 flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined">wifi</span>
+</div>
+<div>
+<div class="font-label-mono text-label-mono text-on-surface">Internet Fibra</div>
+<div class="text-[10px] text-secondary">+5% Produtividade</div>
+</div>
+<div class="mt-xs font-label-mono text-[10px] bg-secondary-container text-on-secondary-container px-2 py-0.5 rounded">R$ 500</div>
+</button>
+<!-- Perk 2 -->
+<button class="glass-card p-sm rounded-xl flex flex-col items-center text-center gap-sm hover:bg-surface-variant/30 active:scale-95 transition-all">
+<div class="w-10 h-10 rounded-full bg-secondary/10 flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined">dns</span>
+</div>
+<div>
+<div class="font-label-mono text-label-mono text-on-surface">Servidor Próprio</div>
+<div class="text-[10px] text-secondary">-10% Tempo Projeto</div>
+</div>
+<div class="mt-xs font-label-mono text-[10px] bg-secondary-container text-on-secondary-container px-2 py-0.5 rounded">R$ 2.500</div>
+</button>
+<!-- Perk 3 -->
+<div class="glass-card p-sm rounded-xl flex flex-col items-center text-center gap-sm opacity-50">
+<div class="w-10 h-10 rounded-full bg-surface-container-highest flex items-center justify-center text-on-surface-variant">
+<span class="material-symbols-outlined">ac_unit</span>
+</div>
+<div>
+<div class="font-label-mono text-label-mono text-on-surface">Ar Condicionado</div>
+<div class="text-[10px] text-on-surface-variant">Retenção de Talentos</div>
+</div>
+<div class="mt-xs font-label-mono text-[10px] text-on-surface-variant">BLOQUEADO</div>
+</div>
+<!-- Perk 4 -->
+<div class="glass-card p-sm rounded-xl flex flex-col items-center text-center gap-sm opacity-50">
+<div class="w-10 h-10 rounded-full bg-surface-container-highest flex items-center justify-center text-on-surface-variant">
+<span class="material-symbols-outlined">sports_esports</span>
+</div>
+<div>
+<div class="font-label-mono text-label-mono text-on-surface">Sala de Jogos</div>
+<div class="text-[10px] text-on-surface-variant">+20% Moral</div>
+</div>
+<div class="mt-xs font-label-mono text-[10px] text-on-surface-variant">BLOQUEADO</div>
+</div>
+</div>
+</section>
+<!-- Visual Atmosphere: Data Sparkline Row -->
+<div class="mt-xl grid grid-cols-1 md:grid-cols-2 gap-lg h-32">
+<div class="glass-card rounded-xl p-md flex flex-col justify-between overflow-hidden relative">
+<div class="z-10">
+<span class="font-label-caps text-on-surface-variant">Custo Operacional Mensal</span>
+<div class="font-headline-md text-error">R$ 1.250,00</div>
+</div>
+<div class="absolute bottom-0 left-0 w-full h-12 opacity-30">
+<div class="w-full h-full bg-gradient-to-t from-error/40 to-transparent"></div>
+<svg class="absolute bottom-0 w-full h-full" preserveaspectratio="none" viewbox="0 0 400 50">
+<path class="text-error" d="M0 45 Q 50 40, 100 45 T 200 35 T 300 40 T 400 25 V 50 H 0 Z" fill="currentColor"></path>
+</svg>
+</div>
+</div>
+<div class="glass-card rounded-xl p-md flex flex-col justify-between overflow-hidden relative">
+<div class="z-10">
+<span class="font-label-caps text-on-surface-variant">Rentabilidade por m²</span>
+<div class="font-headline-md text-secondary">R$ 842,12 /m²</div>
+</div>
+<div class="absolute bottom-0 left-0 w-full h-12 opacity-30">
+<div class="w-full h-full bg-gradient-to-t from-secondary/40 to-transparent"></div>
+<svg class="absolute bottom-0 w-full h-full" preserveaspectratio="none" viewbox="0 0 400 50">
+<path class="text-secondary" d="M0 45 Q 50 30, 100 35 T 200 20 T 300 25 T 400 10 V 50 H 0 Z" fill="currentColor"></path>
+</svg>
+</div>
+</div>
+</div>
+</main>
+<!-- Bottom Navigation Shell (Mobile) -->
+<nav class="fixed bottom-0 w-full z-50 rounded-t-xl md:hidden bg-surface-container-highest/90 backdrop-blur-md border-t border-white/5 shadow-[0_-4px_10px_rgba(0,0,0,0.3)] flex justify-around items-center h-16 px-4 pb-safe">
+<a class="flex flex-col items-center justify-center text-on-surface-variant p-2 active:scale-90 transition-transform duration-150" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="font-label-caps text-[10px] uppercase">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant p-2 active:scale-90 transition-transform duration-150" href="#">
+<span class="material-symbols-outlined">person_add</span>
+<span class="font-label-caps text-[10px] uppercase">Talent</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-secondary-container text-on-secondary-container rounded-xl p-2 active:scale-90 transition-transform duration-150" href="#">
+<span class="material-symbols-outlined">business_center</span>
+<span class="font-label-caps text-[10px] uppercase">Build</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant p-2 active:scale-90 transition-transform duration-150" href="#">
+<span class="material-symbols-outlined">biotech</span>
+<span class="font-label-caps text-[10px] uppercase">Tech</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant p-2 active:scale-90 transition-transform duration-150" href="#">
+<span class="material-symbols-outlined">military_tech</span>
+<span class="font-label-caps text-[10px] uppercase">Prestige</span>
+</a>
+</nav>
+<!-- Interactive Background Particles (Atmospheric) -->
+<div class="fixed inset-0 pointer-events-none -z-10 overflow-hidden" id="particles"></div>
+<script>
+        // Simple atmospheric effect: floating "data" particles
+        const container = document.getElementById('particles');
+        for (let i = 0; i < 20; i++) {
+            const particle = document.createElement('div');
+            particle.className = 'absolute bg-primary/10 rounded-full';
+            const size = Math.random() * 200 + 50;
+            particle.style.width = `${size}px`;
+            particle.style.height = `${size}px`;
+            particle.style.left = `${Math.random() * 100}%`;
+            particle.style.top = `${Math.random() * 100}%`;
+            particle.style.filter = 'blur(60px)';
+            particle.style.animation = `float ${Math.random() * 10 + 10}s infinite alternate ease-in-out`;
+            container.appendChild(particle);
+        }
+
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes float {
+                from { transform: translate(0, 0); }
+                to { transform: translate(20px, 40px); }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body></html>

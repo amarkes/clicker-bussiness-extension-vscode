@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="pt-BR"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Empresa Clicker - Evolução Corporativa</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-secondary-fixed-variant": "#005236",
+                    "error-container": "#93000a",
+                    "on-secondary-fixed": "#002113",
+                    "inverse-primary": "#005ac2",
+                    "surface-container": "#171f33",
+                    "on-primary-container": "#00285d",
+                    "surface-container-highest": "#2d3449",
+                    "outline": "#8c909f",
+                    "on-surface": "#dae2fd",
+                    "surface-container-high": "#222a3d",
+                    "tertiary-fixed": "#e9ddff",
+                    "primary": "#adc6ff",
+                    "inverse-surface": "#dae2fd",
+                    "on-background": "#dae2fd",
+                    "surface-bright": "#31394d",
+                    "on-primary-fixed-variant": "#004395",
+                    "on-tertiary-fixed": "#23005c",
+                    "on-tertiary-fixed-variant": "#5516be",
+                    "on-secondary": "#003824",
+                    "secondary-fixed-dim": "#4edea3",
+                    "primary-fixed": "#d8e2ff",
+                    "primary-fixed-dim": "#adc6ff",
+                    "error": "#ffb4ab",
+                    "on-surface-variant": "#c2c6d6",
+                    "surface-dim": "#0b1326",
+                    "secondary-fixed": "#6ffbbe",
+                    "secondary-container": "#00a572",
+                    "surface-tint": "#adc6ff",
+                    "tertiary-container": "#a078ff",
+                    "surface-container-lowest": "#060e20",
+                    "surface-variant": "#2d3449",
+                    "on-tertiary": "#3c0091",
+                    "tertiary-fixed-dim": "#d0bcff",
+                    "on-error-container": "#ffdad6",
+                    "tertiary": "#d0bcff",
+                    "on-secondary-container": "#00311f",
+                    "on-primary": "#002e6a",
+                    "on-error": "#690005",
+                    "surface-container-low": "#131b2e",
+                    "secondary": "#4edea3",
+                    "on-tertiary-container": "#340080",
+                    "on-primary-fixed": "#001a42",
+                    "primary-container": "#4d8eff",
+                    "outline-variant": "#424754",
+                    "surface": "#0b1326",
+                    "inverse-on-surface": "#283044",
+                    "background": "#0b1326"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "xs": "4px",
+                    "md": "16px",
+                    "sm": "8px",
+                    "xl": "32px",
+                    "gutter": "16px",
+                    "base": "4px",
+                    "margin-mobile": "16px",
+                    "lg": "24px",
+                    "margin-desktop": "40px"
+            },
+            "fontFamily": {
+                    "label-caps": ["Inter"],
+                    "headline-md": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "label-mono": ["JetBrains Mono"],
+                    "body-sm": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "display-currency": ["Inter"],
+                    "display-currency-mobile": ["Inter"]
+            },
+            "fontSize": {
+                    "label-caps": ["11px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "700"}],
+                    "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "label-mono": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                    "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "headline-lg": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "display-currency": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "display-currency-mobile": ["32px", {"lineHeight": "36px", "fontWeight": "700"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .glass-card {
+            background: rgba(23, 31, 51, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        .prestige-glow {
+            box-shadow: 0 0 20px rgba(173, 198, 255, 0.1);
+        }
+        .prestige-glow-gold {
+            box-shadow: 0 0 25px rgba(255, 215, 0, 0.15);
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            background-color: #0b1326;
+            color: #dae2fd;
+        }
+    </style>
+</head>
+<body class="font-body-lg overflow-x-hidden">
+<!-- Top Navigation Bar -->
+<header class="bg-surface-container-low border-b border-outline-variant/10 fixed top-0 flex justify-between items-center w-full px-md h-16 z-50">
+<h1 class="font-headline-lg text-headline-lg-mobile md:text-headline-lg font-bold text-primary">Empresa Clicker</h1>
+<div class="flex items-center gap-md">
+<button class="text-primary hover:bg-surface-container-high transition-colors p-2 rounded-lg active:scale-95 duration-150">
+<span class="material-symbols-outlined">account_balance_wallet</span>
+</button>
+<button class="text-primary hover:bg-surface-container-high transition-colors p-2 rounded-lg active:scale-95 duration-150">
+<span class="material-symbols-outlined">settings</span>
+</button>
+</div>
+</header>
+<!-- Side Navigation (Desktop) -->
+<aside class="fixed left-0 top-0 h-full w-64 bg-surface-container-low border-r border-outline-variant/10 hidden md:flex flex-col py-lg mt-16">
+<div class="px-md mb-xl">
+<h2 class="font-headline-md text-primary">CEO Dashboard</h2>
+<p class="text-on-surface-variant font-body-sm">Series B Evolution</p>
+</div>
+<nav class="flex-grow space-y-xs px-sm">
+<a class="flex items-center gap-md p-md rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container-highest transition-all active:translate-x-1" href="#">
+<span class="material-symbols-outlined">business_center</span>
+<span class="font-body-lg">Operations</span>
+</a>
+<a class="flex items-center gap-md p-md rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container-highest transition-all active:translate-x-1" href="#">
+<span class="material-symbols-outlined">trending_up</span>
+<span class="font-body-lg">Upgrades</span>
+</a>
+<a class="flex items-center gap-md p-md rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container-highest transition-all active:translate-x-1" href="#">
+<span class="material-symbols-outlined">query_stats</span>
+<span class="font-body-lg">Strategy</span>
+</a>
+<a class="flex items-center gap-md p-md rounded-lg text-primary bg-primary-container/20 border-r-4 border-primary transition-all active:translate-x-1" href="#">
+<span class="material-symbols-outlined">auto_graph</span>
+<span class="font-body-lg font-bold">Prestige</span>
+</a>
+<a class="flex items-center gap-md p-md rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container-highest transition-all active:translate-x-1" href="#">
+<span class="material-symbols-outlined">account_balance</span>
+<span class="font-body-lg">Market</span>
+</a>
+</nav>
+</aside>
+<!-- Main Content Area -->
+<main class="pt-24 pb-24 md:pb-12 md:pl-72 px-md min-h-screen">
+<div class="max-w-5xl mx-auto space-y-xl">
+<!-- Hero Title -->
+<div class="text-center md:text-left">
+<h2 class="font-headline-lg text-headline-lg-mobile md:text-headline-lg text-primary uppercase tracking-widest mb-xs">Evolução Corporativa</h2>
+<p class="text-on-surface-variant">Maximize seu legado através de saídas estratégicas.</p>
+</div>
+<!-- Central Prestige Card (The Exit Strategy) -->
+<section class="glass-card prestige-glow-gold rounded-xl p-lg relative overflow-hidden">
+<div class="absolute -right-20 -top-20 w-64 h-64 bg-secondary/10 rounded-full blur-[80px]"></div>
+<div class="relative z-10 grid md:grid-cols-2 gap-lg items-center">
+<div>
+<div class="flex items-center gap-sm mb-md">
+<span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1;">military_tech</span>
+<span class="font-label-caps text-label-caps text-secondary">AÇÃO EXECUTIVA DISPONÍVEL</span>
+</div>
+<h3 class="font-headline-lg text-on-surface mb-sm">Vender Empresa</h3>
+<p class="text-on-surface-variant font-body-sm mb-lg max-w-sm">
+                            Realize os lucros acumulados e converta sua infraestrutura atual em autoridade de mercado permanente.
+                        </p>
+<div class="space-y-md mb-xl">
+<div class="flex justify-between items-end border-b border-outline-variant/20 pb-sm">
+<span class="text-on-surface-variant font-body-sm uppercase">Avaliação Atual</span>
+<span class="font-display-currency-mobile md:font-display-currency text-on-surface">R$ 1.5B</span>
+</div>
+<div class="flex justify-between items-end border-b border-outline-variant/20 pb-sm">
+<span class="text-secondary font-body-sm uppercase">Pontos de Prestígio a Receber</span>
+<span class="font-display-currency-mobile md:font-display-currency text-secondary flex items-center gap-xs">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">auto_graph</span>
+                                    1.240
+                                </span>
+</div>
+</div>
+<button class="w-full md:w-auto bg-secondary hover:bg-secondary-container text-on-secondary-container px-xl py-md rounded-lg font-bold transition-all transform active:scale-95 shadow-lg flex items-center justify-center gap-sm">
+<span>Confirmar Venda e Recomeçar</span>
+<span class="material-symbols-outlined">rocket_launch</span>
+</button>
+</div>
+<div class="hidden md:flex justify-center">
+<div class="relative w-64 h-64">
+<img alt="Prestige Icon" class="w-full h-full object-contain drop-shadow-2xl" data-alt="A minimalist 3D gold briefcase icon floating in a void with neon blue accents and floating digital particles. Professional corporate aesthetic high-end fintech visualization with a dark background and soft global illumination. The style features glassmorphic textures and sophisticated lighting that reflects a high-stakes executive atmosphere." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAhOsEs_ygYdDayGttTKkncowW9vswRNWSQzWE0TBP-A_WMkj6XkMzvbMEfA4gbi3S_HBDIVPFjpGkYBgqvYJ7Fao1IzUeT5rAgcav-618BwIds-uQQIS2ea2d4R-icHu-LMjWQi7peUtf-EdVl2jyoPrYl5CCJHmmaHAkqD0MgWhjQ06wzAJe96wzQfsYdzt8N01-cM7rN6pjyhQ2_MqsulThnwLJt_HkbhsGDzJLf6FLlXCBp5fm8pEucfk1dCqNomEbswYJ1p6Zg"/>
+<!-- Visual Progress Ring Mock -->
+<svg class="absolute inset-0 w-full h-full rotate-[-90deg]">
+<circle class="text-outline-variant/20" cx="128" cy="128" fill="transparent" r="120" stroke="currentColor" stroke-width="2"></circle>
+<circle class="text-secondary" cx="128" cy="128" fill="transparent" r="120" stroke="currentColor" stroke-dasharray="753" stroke-dashoffset="188" stroke-width="4"></circle>
+</svg>
+</div>
+</div>
+</div>
+</section>
+<!-- Permanent Bonuses & Multipliers -->
+<section class="grid md:grid-cols-3 gap-md">
+<div class="md:col-span-2 space-y-md">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-primary">workspace_premium</span>
+<h3 class="font-headline-md text-on-surface">Bônus Permanentes</h3>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-sm">
+<!-- Bonus Card 1 -->
+<div class="glass-card p-md rounded-lg flex items-center gap-md border-l-4 border-primary">
+<div class="bg-primary/10 p-sm rounded-lg text-primary">
+<span class="material-symbols-outlined">groups</span>
+</div>
+<div>
+<h4 class="font-body-lg font-bold text-on-surface">Recrutamento VIP</h4>
+<p class="text-on-surface-variant text-body-sm">Custo de staff -15%</p>
+</div>
+</div>
+<!-- Bonus Card 2 -->
+<div class="glass-card p-md rounded-lg flex items-center gap-md border-l-4 border-primary">
+<div class="bg-primary/10 p-sm rounded-lg text-primary">
+<span class="material-symbols-outlined">bolt</span>
+</div>
+<div>
+<h4 class="font-body-lg font-bold text-on-surface">Produtividade Global</h4>
+<p class="text-on-surface-variant text-body-sm">+25% lucro base</p>
+</div>
+</div>
+<!-- Bonus Card 3 -->
+<div class="glass-card p-md rounded-lg flex items-center gap-md border-l-4 border-primary">
+<div class="bg-primary/10 p-sm rounded-lg text-primary">
+<span class="material-symbols-outlined">account_balance</span>
+</div>
+<div>
+<h4 class="font-body-lg font-bold text-on-surface">Subsídio Fiscal</h4>
+<p class="text-on-surface-variant text-body-sm">+10% Prestige Gain</p>
+</div>
+</div>
+<!-- Locked Bonus -->
+<div class="bg-surface-container-low border border-dashed border-outline-variant/40 p-md rounded-lg flex items-center gap-md opacity-50">
+<div class="bg-surface-container-highest p-sm rounded-lg text-on-surface-variant">
+<span class="material-symbols-outlined">lock</span>
+</div>
+<div>
+<h4 class="font-body-lg font-bold text-on-surface-variant">Logística Aérea</h4>
+<p class="text-on-surface-variant text-body-sm">Desbloqueia em 5k Pts</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Multipliers Summary -->
+<div class="space-y-md">
+<h3 class="font-headline-md text-on-surface">Multiplicadores Ativos</h3>
+<div class="glass-card p-lg rounded-xl flex flex-col justify-center items-center text-center space-y-md">
+<div class="w-24 h-24 rounded-full border-4 border-secondary flex items-center justify-center">
+<span class="font-display-currency-mobile text-secondary">x2.4</span>
+</div>
+<div>
+<p class="font-label-caps text-label-caps text-on-surface-variant uppercase">Impacto Total no Lucro</p>
+<p class="text-body-sm text-on-surface-variant mt-xs">Baseado em sua reputação acumulada em 3 ciclos anteriores.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Exit History -->
+<section class="space-y-md">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-primary">history</span>
+<h3 class="font-headline-md text-on-surface">Histórico de Saídas</h3>
+</div>
+<div class="glass-card rounded-xl overflow-hidden">
+<table class="w-full text-left font-body-sm">
+<thead class="bg-surface-container-high border-b border-outline-variant/20">
+<tr>
+<th class="p-md text-on-surface-variant font-label-caps">DATA</th>
+<th class="p-md text-on-surface-variant font-label-caps">NOME DA EMPRESA</th>
+<th class="p-md text-on-surface-variant font-label-caps text-right">VALORAÇÃO</th>
+<th class="p-md text-on-surface-variant font-label-caps text-right">PRESTÍGIO</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant/10">
+<tr class="hover:bg-surface-container-highest/30 transition-colors">
+<td class="p-md text-on-surface">14/05/2024</td>
+<td class="p-md text-on-surface font-bold">TechAlpha Solutions</td>
+<td class="p-md text-on-surface text-right">R$ 850.4M</td>
+<td class="p-md text-secondary text-right font-bold">+680</td>
+</tr>
+<tr class="hover:bg-surface-container-highest/30 transition-colors">
+<td class="p-md text-on-surface">02/03/2024</td>
+<td class="p-md text-on-surface font-bold">Delta Logistics</td>
+<td class="p-md text-on-surface text-right">R$ 412.0M</td>
+<td class="p-md text-secondary text-right font-bold">+330</td>
+</tr>
+<tr class="hover:bg-surface-container-highest/30 transition-colors">
+<td class="p-md text-on-surface">20/01/2024</td>
+<td class="p-md text-on-surface font-bold">Início Humble Ltda</td>
+<td class="p-md text-on-surface text-right">R$ 15.2M</td>
+<td class="p-md text-secondary text-right font-bold">+12</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</div>
+</main>
+<!-- Bottom Navigation (Mobile Only) -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-xs pb-4 pt-2 md:hidden backdrop-blur-xl bg-surface-container-highest/60 border-t border-white/5 shadow-lg">
+<button class="flex flex-col items-center justify-center text-on-surface-variant p-2 hover:text-primary transition-all active:scale-90 duration-200">
+<span class="material-symbols-outlined">factory</span>
+<span class="font-label-caps text-label-caps">Biz</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant p-2 hover:text-primary transition-all active:scale-90 duration-200">
+<span class="material-symbols-outlined">shopping_cart</span>
+<span class="font-label-caps text-label-caps">Store</span>
+</button>
+<button class="flex flex-col items-center justify-center bg-secondary-container text-on-secondary-container rounded-xl p-2 min-w-[64px] active:scale-90 duration-200">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">military_tech</span>
+<span class="font-label-caps text-label-caps">Prestige</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant p-2 hover:text-primary transition-all active:scale-90 duration-200">
+<span class="material-symbols-outlined">bar_chart</span>
+<span class="font-label-caps text-label-caps">Stats</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant p-2 hover:text-primary transition-all active:scale-90 duration-200">
+<span class="material-symbols-outlined">menu</span>
+<span class="font-label-caps text-label-caps">Menu</span>
+</button>
+</nav>
+<script>
+        // Micro-interaction for the central button
+        const confirmBtn = document.querySelector('button.bg-secondary');
+        confirmBtn.addEventListener('mouseenter', () => {
+            confirmBtn.classList.add('shadow-[0_0_15px_rgba(78,222,163,0.4)]');
+        });
+        confirmBtn.addEventListener('mouseleave', () => {
+            confirmBtn.classList.remove('shadow-[0_0_15px_rgba(78,222,163,0.4)]');
+        });
+
+        // Subtle parallax or ambient movement for background glow
+        document.addEventListener('mousemove', (e) => {
+            const x = e.clientX / window.innerWidth;
+            const y = e.clientY / window.innerHeight;
+            const glow = document.querySelector('.bg-secondary\\/10');
+            if(glow) {
+                glow.style.transform = `translate(${x * 20}px, ${y * 20}px)`;
+            }
+        });
+    </script>
+</body></html>

@@ -1,0 +1,81 @@
+@import "tailwindcss";
+
+@theme {
+  /* Paleta principal */
+  --color-brand-50:  #eef6ff;
+  --color-brand-100: #d8ebff;
+  --color-brand-200: #b9d9ff;
+  --color-brand-300: #88beff;
+  --color-brand-400: #519aff;
+  --color-brand-500: #2672ff;
+  --color-brand-600: #1050f5;
+  --color-brand-700: #0d3ce1;
+  --color-brand-800: #1131b6;
+  --color-brand-900: #132f8f;
+
+  /* Superfícies (dark UI estilo dashboard) */
+  --color-surface-900: #0d0f14;
+  --color-surface-800: #13161e;
+  --color-surface-700: #1a1e28;
+  --color-surface-600: #222737;
+  --color-surface-500: #2c3145;
+
+  /* Texto */
+  --color-text-primary:   #f1f3f9;
+  --color-text-secondary: #8b91a8;
+  --color-text-muted:     #555d78;
+
+  /* Tiers de funcionários / escritórios */
+  --color-tier-intern:   #6b7280; /* cinza   — Estagiário  */
+  --color-tier-junior:   #3b82f6; /* azul    — Júnior      */
+  --color-tier-mid:      #8b5cf6; /* roxo    — Pleno       */
+  --color-tier-senior:   #f59e0b; /* âmbar   — Sênior      */
+  --color-tier-lead:     #f97316; /* laranja — Tech Lead   */
+  --color-tier-manager:  #ec4899; /* rosa    — Gerente     */
+  --color-tier-director: #14b8a6; /* teal    — Diretor     */
+
+  /* Feedback */
+  --color-success: #22c55e;
+  --color-warning: #f59e0b;
+  --color-danger:  #ef4444;
+  --color-money:   #4ade80;
+
+  /* Animações */
+  --animate-click-pop:  click-pop  0.15s ease-out;
+  --animate-money-in:   money-in   0.35s ease-out;
+  --animate-pulse-slow: pulse-slow 2s ease-in-out infinite;
+
+  @keyframes click-pop {
+    0%   { transform: scale(1); }
+    40%  { transform: scale(0.92); }
+    100% { transform: scale(1); }
+  }
+
+  @keyframes money-in {
+    0%   { opacity: 0; transform: translateY(10px); }
+    100% { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes pulse-slow {
+    0%, 100% { opacity: 1; }
+    50%       { opacity: 0.6; }
+  }
+}
+
+/* Reset base */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background-color: var(--color-surface-900);
+  color: var(--color-text-primary);
+  font-family: ui-sans-serif, system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Scrollbar customizada para o painel lateral */
+::-webkit-scrollbar       { width: 4px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--color-surface-500); border-radius: 9999px; }

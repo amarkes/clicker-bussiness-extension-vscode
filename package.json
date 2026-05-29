@@ -1,0 +1,45 @@
+{
+  "name": "clicker-business",
+  "displayName": "Clicker Business",
+  "description": "De freelancer a multinacional — um jogo idle dentro do VSCode.",
+  "version": "0.0.1",
+  "publisher": "your-publisher-id",
+  "engines": {
+    "vscode": "^1.95.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "clicker-business.start",
+        "title": "Clicker Business: Abrir Jogo"
+      }
+    ]
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run build",
+    "build:web": "cd webview && npm run build",
+    "build:ext": "tsc -p ./",
+    "build": "npm run build:web && npm run build:ext",
+    "watch:ext": "tsc -watch -p ./",
+    "watch:web": "cd webview && npm run dev",
+    "lint": "eslint src",
+    "package": "npm run build && vsce package",
+    "publish": "npm run build && vsce publish"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.95.0",
+    "@types/mocha": "^10.0.10",
+    "@types/node": "20.x",
+    "@typescript-eslint/eslint-plugin": "^8.31.1",
+    "@typescript-eslint/parser": "^8.31.1",
+    "eslint": "^9.25.0",
+    "typescript": "^5.8.3",
+    "@vscode/test-cli": "^0.0.10",
+    "@vscode/test-electron": "^2.5.2"
+  }
+}
